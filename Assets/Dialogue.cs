@@ -16,6 +16,7 @@ public class Dialogue : MonoBehaviour
     private bool insideTrigger = false;
 
 
+
     void Start()
     {
         textComponent.text = string.Empty;
@@ -64,14 +65,5 @@ public class Dialogue : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        insideTrigger = true;
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        insideTrigger = false;
     }
 }
