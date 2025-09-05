@@ -14,6 +14,7 @@ public class Dialogue : MonoBehaviour
     public float textspeed;
     private int index;
     public bool typing;
+    public Animator animator;
 
 
 
@@ -40,6 +41,7 @@ public class Dialogue : MonoBehaviour
     }
     public void StartDialogue()
     {
+        animator.SetTrigger("Open Dialogue");
         if (typing == false)
         {
             gameObject.SetActive(true);
@@ -71,6 +73,7 @@ public class Dialogue : MonoBehaviour
         {
             textComponent.text = string.Empty;
             typing = false;
+            animator.SetTrigger("End Dialogue");
             gameObject.SetActive(false);
         }
     }
