@@ -13,19 +13,19 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textspeed;
     private int index;
-    private bool insideTrigger = false;
+    public bool typing;
 
 
 
     void Start()
     {
+        gameObject.SetActive(false);
         textComponent.text = string.Empty;
-        StartDialogue();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && insideTrigger)
+        if (Input.GetMouseButtonDown(0))
         {
             if (textComponent.text == lines[index])
             {
@@ -38,19 +38,25 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
-    void StartDialogue()
+    public void StartDialogue()
     {
-        index = 0;
-        StartCoroutine(TypeLine());
+        if (typing == false)
+        {
+            gameObject.SetActive(true);
+            index = 0;
+            StartCoroutine(TypeLine());
+        }
     }
 
     IEnumerator TypeLine()
     {
+        typing = true;
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textspeed);
         }
+        
     }
 
     void NextLine()
@@ -63,6 +69,8 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            textComponent.text = string.Empty;
+            typing = false;
             gameObject.SetActive(false);
         }
     }
