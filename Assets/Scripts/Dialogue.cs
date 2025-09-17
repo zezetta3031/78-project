@@ -10,10 +10,10 @@ using Unity.VisualScripting;
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
-    public string[] lines;
-    public float textspeed;
-    private int index;
-    public bool typing;
+    public string[] lines; // The list of dialogue lines that will be displayed
+    public float textspeed; // The speed that each letter is typed, lower means faster
+    private int index; // The current text string in lines
+    public bool typing; // true when the dialogue box is open
     public Animator animator;
 
 
@@ -39,9 +39,9 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
-    public void StartDialogue()
+    public void StartDialogue() // Activates the dialogue box and begins typing
     {
-        animator.SetTrigger("Open Dialogue");
+        animator.SetTrigger("Open Dialogue");  
         if (typing == false)
         {
             gameObject.SetActive(true);
@@ -50,7 +50,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    IEnumerator TypeLine()
+    IEnumerator TypeLine() // Goes through each letter in the current line and displays it
     {
         typing = true;
         foreach (char c in lines[index].ToCharArray())
@@ -61,7 +61,7 @@ public class Dialogue : MonoBehaviour
         
     }
 
-    void NextLine()
+    void NextLine() // Sets the text component to next line in lines[] or disables if there are no more lines
     {
         if (index < lines.Length - 1)
         {
