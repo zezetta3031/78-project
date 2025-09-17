@@ -41,11 +41,6 @@ namespace TarodevController
         private void Update()
         {
             _time += Time.deltaTime;
-            if (Input.GetMouseButtonDown(1))
-            {
-                Time.timeScale = 0.5f;
-
-            }
             GatherInput();
         }
 
