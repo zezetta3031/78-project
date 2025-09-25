@@ -5,53 +5,49 @@ using UnityEngine.UIElements;
 
 public class Slowtime : MonoBehaviour
 {
-    float SlowCooldown = 0;
-    float slowTimer = 5;
-    bool slowingTime = false;
+    public float SlowCooldown; //time left before slowtime can be used again
+    public float slowTimer; // how long the time slow will last
+    public bool slowingTime; // whether time is currently slowed
 
     void Start()
     {
-        SlowCooldown = 0;
-        slowTimer = 5;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("left shift"))
+        if (Input.GetKey("left shift") && SlowCooldown <= 0 && !slowingTime)
         {
-                slowTime();
+            StartCoroutine(slowTime());
         }
-        if (slowTimer >= 5)
-        {
-                slowingTime = false;
-        }
-        Debug.Log(slowTimer);
-        Debug.Log(SlowCooldown);
-        Debug.Log(slowingTime);
-        if (!slowingTime)
-        {
-            while (SlowCooldown > 0)
-            {
-                SlowCooldown -= Time.deltaTime;
-            }
-        }
+        // Debug.LogFormat("slow timer: {0:F2}", slowTimer);
+        // Debug.LogFormat("Cooldown: {0:F2}", SlowCooldown);
+        // Debug.LogFormat("Slowing Time: {0:F2}", slowingTime);
     }
 
 
-    public void slowTime()
+    IEnumerator slowTime()
     {
         if (SlowCooldown <= 0)
         {
-            SlowCooldown = 15;
-            slowTimer = 0;
+
+            slowTimer = 3;
             slowingTime = true;
-            while (slowTimer < 5)
+            while (slowTimer > 0)
             {
                 Time.timeScale = 0.5f;
-                slowTimer += Time.deltaTime;
+                slowTimer -= Time.deltaTime * (1 / Time.timeScale);
+                yield return null;
             }
-            Debug.Log("got past");
+            SlowCooldown = 15;
+            slowingTime = false;
+            while (SlowCooldown > 0)
+            {
+                Time.timeScale = 1f;
+                SlowCooldown -= Time.deltaTime;
+                yield return null;
+            }
         }
     }
 }

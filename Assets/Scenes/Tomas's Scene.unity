@@ -384,6 +384,18 @@ MonoBehaviour:
   dialogueBox: {fileID: 0}
   dialogueSetterScript: {fileID: 0}
   dialogueScript: {fileID: 1704454681}
+--- !u!114 &358795704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125302698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be936f5894aa431bbef91bd0eb5815e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &501840019
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +908,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1544650614272011804, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 358795700}
+    - targetCorrespondingSourceObject: {fileID: 1544650614272011804, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 358795704}
   m_SourcePrefab: {fileID: 100100000, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
 --- !u!1 &1704454679
 GameObject:
