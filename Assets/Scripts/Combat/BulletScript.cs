@@ -5,15 +5,24 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public GameObject projectile;
+    // private int _framesInsideObject = 0;
+    
+    // private void OnCollisionStay2D(Collision2D other)
+    // {
+    //     _framesInsideObject++;
+    //     if (_framesInsideObject >= 10)
+    //         Destroy(gameObject);
+    // }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(projectile);
+        if (other.CompareTag("Dialogue Trigger") || other.CompareTag("Player"))
+            return;
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(projectile);
+        Destroy(gameObject);
     }
 }
