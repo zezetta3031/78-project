@@ -6,7 +6,7 @@ using UnityEngine;
 public class SampleWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public float projectileSpeed = 1000f;
+    public float projectileSpeed = 500f;
     public Transform firePoint; // where the projectile spawns (can be the character's position)
     
     // Start is called before the first frame update
@@ -31,8 +31,8 @@ public class SampleWeapon : MonoBehaviour
         mouseWorldPos.z = 0f;
 
         // Calculate direction from firePoint to mouse
-        Vector2 direction = (mouseWorldPos - firePoint.position).normalized * 2;
-        Vector3 spawnPos = firePoint.position + (Vector3)(direction);
+        Vector2 direction = (mouseWorldPos - firePoint.position).normalized * 1.1f;
+        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
 
         // Instantiate projectile
         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
@@ -43,6 +43,7 @@ public class SampleWeapon : MonoBehaviour
         
         // Apply velocity
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.velocity = direction * projectileSpeed;
     }
 }
