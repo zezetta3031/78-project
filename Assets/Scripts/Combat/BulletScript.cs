@@ -16,7 +16,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Dialogue Trigger") || other.CompareTag("Player"))
+        if (other.CompareTag("Dialogue Trigger") || other.CompareTag("Player") || other.gameObject.name.Contains("Bullet"))
             return;
         Destroy(gameObject);
     }
