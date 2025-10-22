@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SampleWeapon : MonoBehaviour
+public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public float projectileSpeed = 500f;
