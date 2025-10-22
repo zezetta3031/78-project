@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     //Collision check variables
     private RaycastHit2D groundHit;
     private RaycastHit2D headHit;
-    private bool isGrounded;
+    public bool isGrounded;
     private bool bumpedHead;
 
     //jump variables
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isFalling;
     private float fastFallTime; //time it takes the player to go from moving upwards to moving downwards
     private float fastFallReleaseSpeed; //vertical velocity of the player when entering fast fall
-    private int numOfJumpsUsed;
+    public int numOfJumpsUsed;
 
     //jump apex variables
     private float apexPoint;
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpReleasedDuringBuffer;
 
     //coyote time variables
-    private float coyoteTimer;
+    public float coyoteTimer;
 
     private void Awake()
     {
