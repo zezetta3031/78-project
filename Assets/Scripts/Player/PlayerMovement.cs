@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     //Collision check variables
     private RaycastHit2D groundHit;
     private RaycastHit2D headHit;
-    private bool isGrounded;
+    public bool isGrounded;
     private bool bumpedHead;
 
     //jump variables
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isFalling;
     private float fastFallTime; //time it takes the player to go from moving upwards to moving downwards
     private float fastFallReleaseSpeed; //vertical velocity of the player when entering fast fall
-    private int numOfJumpsUsed;
+    public int numOfJumpsUsed;
 
     //jump apex variables
     private float apexPoint;
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpReleasedDuringBuffer;
 
     //coyote time variables
-    private float coyoteTimer;
+    public float coyoteTimer;
 
     private void Awake()
     {
@@ -172,14 +172,14 @@ public class PlayerMovement : MonoBehaviour
         }
         // double jump
 
-        else if (jumpBufferTimer > 0f && isJumping && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed - 1) 
+        else if (jumpBufferTimer > 0f && isJumping && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed) 
         {
             isFastFalling = false;
             InitiateJump(1);
         }
 
         //air jump after coyote time
-        else if (jumpBufferTimer > 0f && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
+        else if (jumpBufferTimer > 0f && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed - 1)
         {
             InitiateJump(2);
             isFastFalling = false;
@@ -196,6 +196,8 @@ public class PlayerMovement : MonoBehaviour
             numOfJumpsUsed = 0;
 
             VerticalVelocity = Physics2D.gravity.y;
+
+            numOfJumpsUsed = 0;
         }
     }
 
@@ -253,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
                 //gravity on ascending but not past apex threshold
                 else
                 {
-                    VerticalVelocity += MoveStats.Gravity * Time.deltaTime;
+                    VerticalVelocity += MoveStats.Gravity * Time.fixedDeltaTime;
                     if (isPastApexThreshold)
                     {
                         isPastApexThreshold = false;
@@ -264,7 +266,7 @@ public class PlayerMovement : MonoBehaviour
             //gravity on descending
             else if (!isFastFalling)
             {
-                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultipler * Time.deltaTime; //can be tested without the gravityOnRelease multiplier
+                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultipler * Time.fixedDeltaTime; //can be tested without the gravityOnRelease multiplier
             }
 
             else if (VerticalVelocity < 0f)
@@ -287,7 +289,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 VerticalVelocity = Mathf.Lerp(fastFallReleaseSpeed, 0f, (fastFallTime / MoveStats.TimeForUpwardsCancel));
             }
-            fastFallTime += Time.deltaTime;
+            fastFallTime += Time.fixedDeltaTime;
         }
         // normal gravity after falling
         if (!isGrounded && !isJumping)
@@ -296,7 +298,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isFalling = true;
             }
-            VerticalVelocity += MoveStats.Gravity * Time.deltaTime;
+            VerticalVelocity += MoveStats.Gravity * Time.fixedDeltaTime;
         }
 
         //clamp fall speed
@@ -354,11 +356,11 @@ public class PlayerMovement : MonoBehaviour
     private void CountTimers()
     {
         //test if below methods work with time slow
-        jumpBufferTimer -= Time.deltaTime;
+        jumpBufferTimer -= Time.fixedDeltaTime;
 
         if (!isGrounded)
         {
-            coyoteTimer -= Time.deltaTime;
+            coyoteTimer -= Time.fixedDeltaTime;
         }
         else { coyoteTimer = MoveStats.JumpCoyoteTime; }
 
