@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Time Stop",
+                    "type": "Button",
+                    "id": "086e9511-4f5a-4fb9-9329-d329dd17b404",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -169,7 +178,7 @@
                 {
                     "name": "",
                     "id": "01fc5b84-3628-48ae-b59a-646b3f6a2b49",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -185,6 +194,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab3c91c6-08a2-44d9-a5f6-df6e0464e681",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Time Stop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

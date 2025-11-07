@@ -21,16 +21,13 @@ public class TimeStopUI : MonoBehaviour
         if (slowTimeScript.slowingTime)
         {
             fillCircle.color = new Color32(112,255,188,255);
-            fillCircle.fillAmount = slowTimeScript.slowTimer / 3;
+            fillCircle.fillAmount = slowTimeScript.slowTimer / 5;
         }
         else
         {
             fillCircle.color = new Color32(133, 222, 226, 255);
             fillCircle.fillAmount = slowTimeScript.SlowCooldown / 15;
         }
-
-        Debug.Log(slowTimeScript.SlowCooldown);
-        Debug.Log(fillCircle.fillAmount);
     }
 
 }

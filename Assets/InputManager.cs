@@ -13,7 +13,9 @@ public class InputManager : MonoBehaviour
     public static bool JumpIsHeld;
     public static bool JumpWasReleased;
     public static bool RunIsHeld;
+    public static bool slowTimeAction;
 
+    private InputAction timestop;
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction runAction;
@@ -21,6 +23,7 @@ public class InputManager : MonoBehaviour
     {
         PlayerInput = GetComponent<PlayerInput>();
 
+        timestop = PlayerInput.actions["Time Stop"];
         moveAction = PlayerInput.actions["Move"];
         jumpAction = PlayerInput.actions["Jump"];
         runAction = PlayerInput.actions["Run"];
@@ -30,6 +33,7 @@ public class InputManager : MonoBehaviour
     {
         Movement = moveAction.ReadValue<Vector2>();
 
+        slowTimeAction = timestop.WasPressedThisFrame();
         JumpWasPressed = jumpAction.WasPressedThisFrame();
         JumpIsHeld = jumpAction.IsPressed();
         JumpWasReleased = jumpAction.WasReleasedThisFrame();
