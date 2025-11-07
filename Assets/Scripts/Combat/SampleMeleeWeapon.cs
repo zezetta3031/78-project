@@ -7,7 +7,7 @@ public class SampleMeleeWeapon : MonoBehaviour
     public float swipeAngle = 90f;        // Total angle of the swipe
     public float swipeDuration = 0.2f;    // How long the swipe lasts
     public float meleeCooldown = 0.4f;    // Delay before you can swing again
-    public float meleeRange = 1.2f;
+    public float meleeRange = 1f;
     public GameObject meleeVisualPrefab;
 
     private bool isMeleeInProgress = false;
@@ -35,7 +35,7 @@ public class SampleMeleeWeapon : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
-        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 1f, 0f);
+        Vector2 spawnPos = (Vector2)(firePoint.position) + direction + new Vector2(0f, 0f);
 
         // --- Determine base angle facing the mouse ---
         float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -64,7 +64,7 @@ public class SampleMeleeWeapon : MonoBehaviour
             if (offset.y < 0f)
                 offset.y = 0f;
 
-            visual.transform.position = firePoint.position + offset;
+            visual.transform.position = spawnPos + (Vector2)(offset);
             visual.transform.rotation = Quaternion.Euler(0, 0, totalAngle);
 
             elapsed += Time.deltaTime;
