@@ -90,12 +90,12 @@ public class PlayerMovement : MonoBehaviour
             }
             else { targetVelocity = new Vector2(moveInput.x, 0f) * MoveStats.MaxWalkSpeed; }
 
-            moveVelocity = Vector2.Lerp(moveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+            moveVelocity = Vector2.Lerp(moveVelocity, targetVelocity, acceleration * Time.deltaTime);
             rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
         }
         else if (moveInput == Vector2.zero)
         {
-            moveVelocity = Vector2.Lerp(moveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+            moveVelocity = Vector2.Lerp(moveVelocity, Vector2.zero, deceleration * Time.deltaTime);
             rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
         }
     }
@@ -162,8 +162,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         //initiate jump with jump buffering and coyote time
-        if (jumpBufferTimer > 0f && !isJumping && (isGrounded || coyoteTimer > 0f)) //checks if the player is able to jump
+        if (jumpBufferTimer > 0f && !isFalling && (isGrounded || coyoteTimer > 0f)) //checks if the player is able to jump
         {
+            Debug.Log("Jump 1");
             InitiateJump(1);
             if (jumpReleasedDuringBuffer)
             {
@@ -173,8 +174,9 @@ public class PlayerMovement : MonoBehaviour
         }
         // double jump
 
-        else if (jumpBufferTimer > 0f && isJumping && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
+        else if (jumpBufferTimer > 0f && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
         {
+            Debug.Log("Jump 2");
             isFastFalling = false;
             isFalling = false;
             InitiateJump(1);
@@ -183,6 +185,7 @@ public class PlayerMovement : MonoBehaviour
         //air jump after coyote time
         else if (jumpBufferTimer > 0f && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed - 1)
         {
+            Debug.Log("Jump 3");
             InitiateJump(2);
             isFastFalling = false;
         }
@@ -210,10 +213,10 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
         }
 
-        animator.SetTrigger("JumpTrigger");
         jumpBufferTimer = 0f;
         numOfJumpsUsed += numberOfJumpsToUse;
         VerticalVelocity = MoveStats.InitialJumpVelocity;
+        animator.SetTrigger("JumpTrigger");
     }
 
     private void Jump()
@@ -242,7 +245,7 @@ public class PlayerMovement : MonoBehaviour
 
                     if (isPastApexThreshold)
                     {
-                        timePastApexThreshold += Time.fixedDeltaTime;
+                        timePastApexThreshold += Time.deltaTime;
                         if (timePastApexThreshold < MoveStats.ApexHangTime)
                         {
                             VerticalVelocity = 0;
@@ -250,6 +253,8 @@ public class PlayerMovement : MonoBehaviour
                         else
                         {
                             VerticalVelocity = -0.01f;
+                            isJumping = false;
+                            isFalling = true;
                         }
                     }
                 }
@@ -258,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
                 //gravity on ascending but not past apex threshold
                 else
                 {
-                    VerticalVelocity += MoveStats.Gravity * Time.fixedDeltaTime;
+                    VerticalVelocity += MoveStats.Gravity * Time.deltaTime;
                     if (isPastApexThreshold)
                     {
                         isPastApexThreshold = false;
@@ -269,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
             //gravity on descending
             else if (!isFastFalling)
             {
-                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultipler * Time.fixedDeltaTime; //can be tested without the gravityOnRelease multiplier
+                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultipler * Time.deltaTime; //can be tested without the gravityOnRelease multiplier
             }
 
             else if (VerticalVelocity < 0f)
@@ -277,6 +282,7 @@ public class PlayerMovement : MonoBehaviour
                 if (!isFalling)
                 {
                     isFalling = true;
+                    isJumping = false;
                 }
             }
         }
@@ -286,13 +292,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (fastFallTime >= MoveStats.TimeForUpwardsCancel)
             {
-                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultipler * Time.fixedDeltaTime;
+                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultipler * Time.deltaTime;
             }
             else if (fastFallTime < MoveStats.TimeForUpwardsCancel)
             {
                 VerticalVelocity = Mathf.Lerp(fastFallReleaseSpeed, 0f, (fastFallTime / MoveStats.TimeForUpwardsCancel));
             }
-            fastFallTime += Time.fixedDeltaTime;
+            fastFallTime += Time.deltaTime;
         }
         // normal gravity after falling
         if (!isGrounded && !isJumping)
@@ -301,7 +307,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isFalling = true;
             }
-            VerticalVelocity += MoveStats.Gravity * Time.fixedDeltaTime;
+            VerticalVelocity += MoveStats.Gravity * Time.deltaTime;
         }
 
         //clamp fall speed
@@ -359,11 +365,11 @@ public class PlayerMovement : MonoBehaviour
     private void CountTimers()
     {
         //test if below methods work with time slow
-        jumpBufferTimer -= Time.fixedDeltaTime;
+        jumpBufferTimer -= Time.deltaTime;
 
         if (!isGrounded)
         {
-            coyoteTimer -= Time.fixedDeltaTime;
+            coyoteTimer -= Time.deltaTime;
         }
         else { coyoteTimer = MoveStats.JumpCoyoteTime; }
 
