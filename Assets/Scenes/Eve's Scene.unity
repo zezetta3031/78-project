@@ -743,10 +743,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9deedef93d114e21bb2d14c52621ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeAngle: 90
+  swipeAngle: 120
   swipeDuration: 0.2
   meleeCooldown: 0.4
-  meleeRange: 1.2
+  meleeRange: 0.7
   meleeVisualPrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
   firePoint: {fileID: 0}
 --- !u!1 &1749059060 stripped
