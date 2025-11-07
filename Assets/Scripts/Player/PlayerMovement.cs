@@ -12,24 +12,25 @@ public class PlayerMovement : MonoBehaviour
     public PlayerMovementStats MoveStats;
     [SerializeField] private Collider2D feetCollider;
     [SerializeField] private Collider2D bodyCollider;
+    public Animator animator;
 
     private Rigidbody2D rb;
 
     //Movement variables
-    private Vector2 moveVelocity;
-    private bool isFacingRight;
+    public Vector2 moveVelocity { get; private set; }
+    public bool isFacingRight{ get; private set; }
 
     //Collision check variables
     private RaycastHit2D groundHit;
     private RaycastHit2D headHit;
-    public bool isGrounded;
+    public bool isGrounded { get; private set; }
     private bool bumpedHead;
 
     //jump variables
     public float VerticalVelocity { get; private set; }
-    private bool isJumping;
-    private bool isFastFalling; //is true when the player releases jump before they reach the apex of their jump
-    private bool isFalling;
+    public bool isJumping { get; private set; }
+    public bool isFastFalling { get; private set; } //is true when the player releases jump before they reach the apex of their jump
+    public bool isFalling { get; private set; }
     private float fastFallTime; //time it takes the player to go from moving upwards to moving downwards
     private float fastFallReleaseSpeed; //vertical velocity of the player when entering fast fall
     public int numOfJumpsUsed;
@@ -172,9 +173,10 @@ public class PlayerMovement : MonoBehaviour
         }
         // double jump
 
-        else if (jumpBufferTimer > 0f && isJumping && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed) 
+        else if (jumpBufferTimer > 0f && isJumping && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
         {
             isFastFalling = false;
+            isFalling = false;
             InitiateJump(1);
         }
 
@@ -208,6 +210,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
         }
 
+        animator.SetTrigger("JumpTrigger");
         jumpBufferTimer = 0f;
         numOfJumpsUsed += numberOfJumpsToUse;
         VerticalVelocity = MoveStats.InitialJumpVelocity;
@@ -367,6 +370,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
+ 
 
 }
 

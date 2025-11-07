@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,9 +93,862 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 556
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc21417bb15a491a9cd0c82a21a0e86
+      internalID: 946059295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 556
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2589eda2115403b9f7d69f7e7f95e8
+      internalID: 1778049354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_2
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 556
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81411c260e53c47b496b8fe6268ce905
+      internalID: 287935262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_3
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 556
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06bee2b4820904fbdbdf3595b1498dc7
+      internalID: 1095688970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_4
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 556
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c95207d2daa44671bc6f0d6ff56bc84
+      internalID: -1786950022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_5
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 556
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef4c4b4a6672747d1a3d5c1be9ae68ae
+      internalID: 1390946483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_6
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 556
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befdedb20e8df489f94283985791aba2
+      internalID: -1864072231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 519
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: defb9812d8f4b4ac18c4fa507da8a5df
+      internalID: 1443427686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_8
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 519
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82b07a56d7e5d42f7b32c6f3a2ec236c
+      internalID: -331237340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_9
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 519
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b4c74aaf5c043fc9a47e2985be434e
+      internalID: -1928957932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_10
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 519
+        width: 13
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a8845cbdf3a4c438a5ccdcc53a4bbd
+      internalID: 830177180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_11
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 519
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d127c3182dc042d7b7986ce8b6eccdf
+      internalID: 67141356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_12
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 519
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37c5fd3d13be84e619cfd4ff75777412
+      internalID: 1532217444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_13
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 519
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5981f04f334c46cfae4103f858c5883
+      internalID: 1519933295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_14
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 482
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1287193959b34066b022ad5c958f00c
+      internalID: 1219218297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_15
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 482
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f001c0af7604c42ac21f62f440178b
+      internalID: -1648794190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_16
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 484
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efc6520d085f7453ea46e99e8ad821a1
+      internalID: -1728191192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_17
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 488
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ad54f7f70394d3e856bc8f7a13ba8e
+      internalID: -710654639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_18
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 485
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0f33ace367b94c7b8f5271f53ecb980
+      internalID: -218267097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_19
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 484
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a943851ba67ea4c9ab5b6d09ca2c4750
+      internalID: -1809899562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 484
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e6d9eebad9e4554831295b9cfb4119
+      internalID: -231868232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_21
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 443
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0c5bc585c9c4d688ff19363dd5e325
+      internalID: 203656189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_22
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 443
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12976ebe27ba1419386db707fbd9ef97
+      internalID: -682241233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_23
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 443
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b21761859934f5d8a1fc4517a1206c
+      internalID: -1965433919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_24
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 443
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23c21c7081384cca9f0a0a2548253af
+      internalID: 102192316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_25
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 443
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca5487d53f484e79ae88abdb63a93e4
+      internalID: -20666369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_26
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 443
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b743f36580e44b2d9cca94ec3ab97d7
+      internalID: 231349593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_27
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 444
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538e1c07d28694d57b2754414a35e5ca
+      internalID: 1969880379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_28
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 407
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777e5c59e60fe4c249092ac96883ea5a
+      internalID: 1970983479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_29
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 407
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa17741dc8d71485793209774d24ae1e
+      internalID: -1916097383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_30
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 407
+        width: 13
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0e812a9557a343b29a036a91bfc831b
+      internalID: 59280032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_31
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 407
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfc8ca217c43d414694bc94e11381ca7
+      internalID: 1825066836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_32
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 407
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6a899c5691341639f3f9624ca33028
+      internalID: 2110005239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_33
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 407
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bfb58fd65d754bbd9e280a0faf38609
+      internalID: 964907640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_34
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 406
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdebd55e0ea284e0e939e0a8add51186
+      internalID: 1580217088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_35
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 372
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702fb81c11e604d6195fa49711a8a18a
+      internalID: 1882851110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_36
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 374
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d07d1b6652b34ae196a35aef04e5c10
+      internalID: 985637788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_37
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 378
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f431adcfa84774cb1aef0bc82a3948c9
+      internalID: -1896095258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_38
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 375
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb0542fb42bd4f2aa876901789205fd
+      internalID: -184067010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: project 78 basic movement sprites_39
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 374
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cce071389244c0b8f54ba9feae22bb
+      internalID: -872056635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +959,47 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      project 78 basic movement sprites_0: 946059295
+      project 78 basic movement sprites_1: 1778049354
+      project 78 basic movement sprites_10: 830177180
+      project 78 basic movement sprites_11: 67141356
+      project 78 basic movement sprites_12: 1532217444
+      project 78 basic movement sprites_13: 1519933295
+      project 78 basic movement sprites_14: 1219218297
+      project 78 basic movement sprites_15: -1648794190
+      project 78 basic movement sprites_16: -1728191192
+      project 78 basic movement sprites_17: -710654639
+      project 78 basic movement sprites_18: -218267097
+      project 78 basic movement sprites_19: -1809899562
+      project 78 basic movement sprites_2: 287935262
+      project 78 basic movement sprites_20: -231868232
+      project 78 basic movement sprites_21: 203656189
+      project 78 basic movement sprites_22: -682241233
+      project 78 basic movement sprites_23: -1965433919
+      project 78 basic movement sprites_24: 102192316
+      project 78 basic movement sprites_25: -20666369
+      project 78 basic movement sprites_26: 231349593
+      project 78 basic movement sprites_27: 1969880379
+      project 78 basic movement sprites_28: 1970983479
+      project 78 basic movement sprites_29: -1916097383
+      project 78 basic movement sprites_3: 1095688970
+      project 78 basic movement sprites_30: 59280032
+      project 78 basic movement sprites_31: 1825066836
+      project 78 basic movement sprites_32: 2110005239
+      project 78 basic movement sprites_33: 964907640
+      project 78 basic movement sprites_34: 1580217088
+      project 78 basic movement sprites_35: 1882851110
+      project 78 basic movement sprites_36: 985637788
+      project 78 basic movement sprites_37: -1896095258
+      project 78 basic movement sprites_38: -184067010
+      project 78 basic movement sprites_39: -872056635
+      project 78 basic movement sprites_4: -1786950022
+      project 78 basic movement sprites_5: 1390946483
+      project 78 basic movement sprites_6: -1864072231
+      project 78 basic movement sprites_7: 1443427686
+      project 78 basic movement sprites_8: -331237340
+      project 78 basic movement sprites_9: -1928957932
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
