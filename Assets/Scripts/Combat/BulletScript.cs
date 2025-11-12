@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    // private int _framesInsideObject = 0;
-    
-    // private void OnCollisionStay2D(Collision2D other)
-    // {
-    //     _framesInsideObject++;
-    //     if (_framesInsideObject >= 10)
-    //         Destroy(gameObject);
-    // }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Dialogue Trigger") || other.CompareTag("Player") || other.gameObject.name.Contains("Bullet"))
             return;
+        if (other.CompareTag("Enemy"))
+        {
+            // Try to get the EnemyScript component on the object
+            EnemyScript enemy = other.GetComponent<EnemyScript>();
+            if (enemy != null)
+            {
+                enemy.Inflict(0.25); // Apply damage
+            }
+        }
         Destroy(gameObject);
     }
 

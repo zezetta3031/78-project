@@ -10,7 +10,7 @@ public class SampleMeleeWeapon : MonoBehaviour
     public float meleeRange = 1f;
     public GameObject meleeVisualPrefab;
 
-    private bool isMeleeInProgress = false;
+    private bool isMeleeInProgress;
     public Transform firePoint;
 
     void Start()

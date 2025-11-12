@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dialogue Trigger
+  - Enemy
   layers:
   - Default
   - TransparentFX
