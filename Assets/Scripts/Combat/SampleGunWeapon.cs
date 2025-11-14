@@ -6,7 +6,7 @@ using UnityEngine;
 public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public float projectileSpeed = 500f;
+    public float projectileSpeed = 15f;
     public Transform firePoint; // where the projectile spawns (can be the character's position)
     
     // Start is called before the first frame update
