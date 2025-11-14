@@ -10,7 +10,7 @@ public class SampleMeleeWeapon : MonoBehaviour
     public float meleeRange = 1f;
     public GameObject meleeVisualPrefab;
 
-    private bool isMeleeInProgress = false;
+    private bool _isMeleeInProgress;
     public Transform firePoint;
 
     void Start()
@@ -21,7 +21,7 @@ public class SampleMeleeWeapon : MonoBehaviour
     void Update()
     {
         // Middle mouse click (2). You can change to 0 or 1 for left/right clicks
-        if (Input.GetMouseButtonDown(2) && !isMeleeInProgress)
+        if (Input.GetMouseButtonDown(2) && !_isMeleeInProgress)
         {
             StartCoroutine(Melee());
         }
@@ -29,10 +29,10 @@ public class SampleMeleeWeapon : MonoBehaviour
 
     IEnumerator Melee()
     {
-        isMeleeInProgress = true;
+        _isMeleeInProgress = true;
 
         // --- Determine the direction to the mouse ---
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorldPos = Camera.main!.ScreenToWorldPoint(Input.mousePosition); // if this null assertion fails, we're fucked. but it should never fail because there should always be a camera.
         mouseWorldPos.z = 0f;
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
         Vector2 spawnPos = (Vector2)(firePoint.position) + direction + new Vector2(0f, 0f);
@@ -75,7 +75,7 @@ public class SampleMeleeWeapon : MonoBehaviour
         Debug.Log("Melee finished");
 
         yield return new WaitForSeconds(meleeCooldown);
-        isMeleeInProgress = false;
+        _isMeleeInProgress = false;
     }
 }
 

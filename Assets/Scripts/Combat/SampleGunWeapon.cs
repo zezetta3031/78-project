@@ -6,7 +6,7 @@ using UnityEngine;
 public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public float projectileSpeed = 500f;
+    public float projectileSpeed = 15f;
     public Transform firePoint; // where the projectile spawns (can be the character's position)
     
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class SampleGunWeapon : MonoBehaviour
     void Shoot()
     {
         // Get mouse position in world space
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorldPos = Camera.main!.ScreenToWorldPoint(Input.mousePosition); // if this null assertion fails, we're fucked. but it should never fail because there should always be a camera.
         mouseWorldPos.z = 0f;
 
         // Calculate direction from firePoint to mouse
