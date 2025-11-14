@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 465797474}
   - component: {fileID: 465797478}
   - component: {fileID: 465797479}
+  - component: {fileID: 465797480}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -620,6 +621,21 @@ MonoBehaviour:
   dialogueBox: {fileID: 0}
   dialogueSetterScript: {fileID: 0}
   dialogueScript: {fileID: 36738107}
+--- !u!114 &465797480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465797473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5cbfd5ff34847cda1d062c59b7eba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectileSpeed: 15
+  firePoint: {fileID: 465797477}
 --- !u!1 &503069802
 GameObject:
   m_ObjectHideFlags: 0
