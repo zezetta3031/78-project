@@ -19,11 +19,12 @@ public class Teleporter : MonoBehaviour
     }
     public void Update()
     {
-        Debug.Log(playerObject);
+        // Debug.Log(playerObject);
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag.Contains("Player")){
             playerObject = other.gameObject;
             playerObject.transform.position = endPosition;
