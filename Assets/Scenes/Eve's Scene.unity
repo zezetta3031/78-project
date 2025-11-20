@@ -157,6 +157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 17796806}
+  renderer: {fileID: 0}
+  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectileSpeed: 15
+  firePoint: {fileID: 17796810}
 --- !u!95 &17796808
 Animator:
   serializedVersion: 5
