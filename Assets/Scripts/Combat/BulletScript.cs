@@ -17,6 +17,10 @@ public class BulletScript : MonoBehaviour
             {
                 enemy.Inflict(0.25); // Apply damage
             }
+            else
+            {
+                Debug.Log("No enemy script found on object tagged as enemy");
+            }
         }
         Destroy(gameObject);
     }

@@ -23,9 +23,9 @@ public class Slowtime : MonoBehaviour
             Debug.Log("input detected");
             StartCoroutine(slowTime());
         }
-        Debug.LogFormat("slow timer: {0:F2}", slowTimer);
-        Debug.LogFormat("Cooldown: {0:F2}", SlowCooldown);
-        Debug.LogFormat("Slowing Time: {0:F2}", slowingTime);
+        // Debug.LogFormat("slow timer: {0:F2}", slowTimer);
+        // Debug.LogFormat("Cooldown: {0:F2}", SlowCooldown);
+        // Debug.LogFormat("Slowing Time: {0:F2}", slowingTime);
     }
 
 
