@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     public Animator animator;
-    private PlayerMovement MovementScript;
+    public AdvancedMovementTest MovementScript;
     private bool isMoving;
     void Start()
     {
-        MovementScript = GetComponentInParent<PlayerMovement>();
+        MovementScript = GetComponentInParent<AdvancedMovementTest>();
     }
 
     // Update is called once per frame
@@ -21,12 +21,12 @@ public class PlayerAnimator : MonoBehaviour
     }
     
        public void AnimationUpdate(Animator animator){
-        animator.SetFloat("AnimVelocityX", MovementScript.moveVelocity.x);
+        animator.SetFloat("AnimVelocityX", MovementScript.HorizontalVelocity);
         animator.SetBool("AnimIsFalling", MovementScript.isFalling);
         animator.SetBool("AnimIsGrounded", MovementScript.isGrounded);
         animator.SetBool("AnimIsFastFalling", MovementScript.isFastFalling);
         animator.SetBool("AnimIsJumping", MovementScript.isJumping);
-        if (MovementScript.moveVelocity.x > 1 || MovementScript.moveVelocity.x < -1)
+        if (MovementScript.HorizontalVelocity > 1 || MovementScript.HorizontalVelocity < -1)
         {
             isMoving = true;
         }
