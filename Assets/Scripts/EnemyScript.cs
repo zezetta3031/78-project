@@ -5,7 +5,7 @@ public class EnemyScript : MonoBehaviour
 {
     public double health = 1.0;
     public GameObject enemy;
-    public Renderer renderer;
+    public new Renderer renderer;
     public GameObject projectilePrefab;
     public float projectileSpeed = 2f;
     public Transform firePoint;
