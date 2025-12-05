@@ -13,7 +13,6 @@ public class HealthScript : MonoBehaviour
         if (_health == 0)
         {
             Debug.Log("Player is dead");
-            Debug.Log(player);
             Destroy(player);
         }
     }

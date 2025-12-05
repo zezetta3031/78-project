@@ -28,7 +28,6 @@ public class BulletScript : MonoBehaviour
             HealthScript health = other.GetComponent<HealthScript>();
             if (health != null)
             {
-                Debug.Log("ya mum gayyyyy");
                 health.Damage();
             }
         }
