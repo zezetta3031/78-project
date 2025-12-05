@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class HealthScript : MonoBehaviour
 {
-    private int health = 3;
-    private GameObject player;
+    private int _health = 3;
+    public GameObject player;
 
-    public void damage()
+    public void Damage()
     {
-        health -= 1;
-        if (health == 0)
+        _health -= 1;
+        if (_health == 0)
         {
+            Debug.Log("Player is dead");
             Destroy(player);
         }
     }

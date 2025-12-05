@@ -28,7 +28,7 @@ public class BulletScript : MonoBehaviour
             HealthScript health = other.GetComponent<HealthScript>();
             if (health != null)
             {
-                health.damage();
+                health.Damage();
             }
         }
         Destroy(gameObject);
