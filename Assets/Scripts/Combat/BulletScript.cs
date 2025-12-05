@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Dialogue Trigger") || other.CompareTag("Player") || other.gameObject.name.Contains("Bullet"))
+        if (other.CompareTag("Dialogue Trigger") || other.gameObject.name.Contains("Bullet"))
             return;
         if (other.CompareTag("Enemy"))
         {
@@ -20,6 +20,15 @@ public class BulletScript : MonoBehaviour
             else
             {
                 Debug.Log("No enemy script found on object tagged as enemy");
+            }
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            HealthScript health = other.GetComponent<HealthScript>();
+            if (health != null)
+            {
+                health.damage();
             }
         }
         Destroy(gameObject);
