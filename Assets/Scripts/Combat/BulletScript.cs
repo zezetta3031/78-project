@@ -25,7 +25,11 @@ public class BulletScript : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            
+            HealthScript health = other.GetComponent<HealthScript>();
+            if (health != null)
+            {
+                health.damage();
+            }
         }
         Destroy(gameObject);
     }
