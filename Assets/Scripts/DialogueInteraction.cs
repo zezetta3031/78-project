@@ -25,6 +25,7 @@ public class DialogueInteraction : MonoBehaviour
             dialogueBox = other.gameObject;
             dialogueSetterScript = dialogueBox.GetComponent<DialogueSetter>();
             dialogueScript.lines = dialogueSetterScript.Lines;
+            dialogueScript.freezePlayerDuringDialogue = dialogueSetterScript.freezePlayer;
             dialogueScript.StartDialogue();
         }
     }

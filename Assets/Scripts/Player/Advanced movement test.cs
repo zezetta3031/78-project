@@ -16,6 +16,8 @@ public class AdvancedMovementTest : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public bool playerFreeze;
+
     //Movement variables
     public float HorizontalVelocity { get; private set; }
     public bool isFacingRight{ get; private set; }
@@ -51,15 +53,15 @@ public class AdvancedMovementTest : MonoBehaviour
     public float coyoteTimer;
 
     //wall slide vars
-    private bool isWallSliding;
-    private bool isWallSlideFalling;
+    public bool isWallSliding;
+    public bool isWallSlideFalling;
 
     //wall jump vars
     private bool useWallJumpMoveStats;
-    private bool isWallJumping;
+    public bool isWallJumping;
     private float wallJumpTime;
-    private bool isWallJumpFastFalling;
-    private bool isWallJumpFalling;
+    public bool isWallJumpFastFalling;
+    public bool isWallJumpFalling;
     private float wallJumpFastFallTime;
     private float wallJumpFastFallReleaseSpeed;
 
@@ -84,7 +86,7 @@ public class AdvancedMovementTest : MonoBehaviour
     {
         isFacingRight = true;
 
-        rb = GetComponent<Rigidbody2D>();
+    rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -94,6 +96,7 @@ public class AdvancedMovementTest : MonoBehaviour
         LandCheck();
 
         WallSlideCheck();
+        WallJumpCheck();
     }
 
     private void FixedUpdate()
@@ -102,6 +105,7 @@ public class AdvancedMovementTest : MonoBehaviour
         Jump();
         Fall();
         WallSlide();
+        WallJump();
 
         if (isGrounded)
         {
@@ -122,7 +126,17 @@ public class AdvancedMovementTest : MonoBehaviour
     private void ApplyVelocity()
     {
         //Clamp fall speed
-        VerticalVelocity = Mathf.Clamp(VerticalVelocity, -MoveStats.MaxFallSpeed, 50f);
+        if (!isDashing)
+        {
+            VerticalVelocity = Mathf.Clamp(VerticalVelocity, -MoveStats.MaxFallSpeed, 50f);
+        }
+        else
+        {
+            VerticalVelocity = Mathf.Clamp(VerticalVelocity, -50f, 50f);
+        }
+
+
+       
 
         rb.velocity = new Vector2(HorizontalVelocity, VerticalVelocity);
     }
@@ -131,23 +145,32 @@ public class AdvancedMovementTest : MonoBehaviour
 
     private void Move(float acceleration, float deceleration, Vector2 moveInput)
     {
-        if (moveInput != Vector2.zero)
+        if (playerFreeze)
         {
-            TurnCheck(moveInput);
+            HorizontalVelocity = 0f;
 
-            float targetVelocity = 0f;
-            if (InputManager.RunIsHeld)
+        }
+        else if (!isDashing)
+        {
+            if (moveInput != Vector2.zero)
             {
-                targetVelocity = (moveInput.x) * MoveStats.MaxRunSpeed;
-            }
-            else { targetVelocity = (moveInput.x) * MoveStats.MaxWalkSpeed; }
+                TurnCheck(moveInput);
 
-            HorizontalVelocity = Mathf.Lerp(HorizontalVelocity, targetVelocity, acceleration * Time.deltaTime);
+                float targetVelocity = 0f;
+                if (InputManager.RunIsHeld)
+                {
+                    targetVelocity = (moveInput.x) * MoveStats.MaxRunSpeed;
+                }
+                else { targetVelocity = (moveInput.x) * MoveStats.MaxWalkSpeed; }
+
+                HorizontalVelocity = Mathf.Lerp(HorizontalVelocity, targetVelocity, acceleration * Time.deltaTime);
+            }
+            else if (moveInput == Vector2.zero)
+            {
+                HorizontalVelocity = Mathf.Lerp(HorizontalVelocity, 0f, deceleration * Time.deltaTime);
+            }
         }
-        else if (moveInput == Vector2.zero)
-        {
-            HorizontalVelocity = Mathf.Lerp(HorizontalVelocity, 0f, deceleration * Time.deltaTime);
-        }
+        
     }
 
     private void TurnCheck(Vector2 moveInput)
@@ -183,25 +206,32 @@ public class AdvancedMovementTest : MonoBehaviour
     private void LandCheck()
     {
          //landing
-        if ((isJumping || isFalling) && isGrounded && VerticalVelocity <= 0f)
+        if ((isJumping || isFalling || isWallJumpFalling || isWallJumping || isWallSlideFalling || isWallSliding || isDashFastFalling) && isGrounded && VerticalVelocity <= 0f)
         {
-            isJumping = false;
-            isFalling = false;
-            isFastFalling = false;
-            fastFallTime = 0f;
-            isPastApexThreshold = false;
-            numOfJumpsUsed = 0;
+            Debug.Log("test");
+            ResetJumpValues();
+            StopWallSlide();
+            ResetWallJumpValues();
+            ResetDashes();
 
             VerticalVelocity = Physics2D.gravity.y;
 
             numOfJumpsUsed = 0;
+
+            if(isDashFastFalling && isGrounded)
+            {
+                ResetDashValues();
+                return;
+            }
+
+            ResetDashValues();
         }
     }
 
     private void Fall()
     {
          // normal gravity after falling
-        if (!isGrounded && !isJumping)
+        if (!isGrounded && !isJumping && !isWallSliding && !isDashing && !isWallJumping && !isDashFastFalling)
         {
             if (!isFalling)
             {
@@ -229,6 +259,15 @@ public class AdvancedMovementTest : MonoBehaviour
         //When we press jump
         if (InputManager.JumpWasPressed)
         {
+            if( isWallSlideFalling && wallJumpPostBufferTimer >= 0f)
+            {
+                return;
+            }
+            else if(isWallSliding || (isTouchingWall && !isGrounded))
+            {
+                return;
+            }
+
             jumpBufferTimer = MoveStats.JumpBufferTime; // player can only jump when jump buffer is >0
             jumpReleasedDuringBuffer = false;
         }
@@ -267,15 +306,20 @@ public class AdvancedMovementTest : MonoBehaviour
         }
         // double jump
 
-        else if (jumpBufferTimer > 0f && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
+        else if (jumpBufferTimer > 0f && (isJumping || isWallSliding || isWallSlideFalling || isAirDashing || isDashFastFalling) && !isTouchingWall && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
         {
             isFastFalling = false;
             isFalling = false;
             InitiateJump(1);
+
+            if (isDashFastFalling)
+            {
+                isDashFastFalling = false;
+            }
         }
 
         //air jump after coyote time
-        else if (jumpBufferTimer > 0f && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed - 1)
+        else if (jumpBufferTimer > 0f && !isWallSlideFalling && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed - 1)
         { 
             InitiateJump(2);
             isFastFalling = false;
@@ -286,15 +330,20 @@ public class AdvancedMovementTest : MonoBehaviour
 
     private void InitiateJump(int numberOfJumpsToUse)
     {
-        if (!isJumping)
+        if (!playerFreeze)
         {
-            isJumping = true;
-        }
+            if (!isJumping)
+            {
+                isJumping = true;
+            }
 
-        jumpBufferTimer = 0f;
-        numOfJumpsUsed += numberOfJumpsToUse;
-        VerticalVelocity = MoveStats.InitialJumpVelocity;
-        animator.SetTrigger("JumpTrigger");
+            ResetWallJumpValues();
+
+            jumpBufferTimer = 0f;
+            numOfJumpsUsed += numberOfJumpsToUse;
+            VerticalVelocity = MoveStats.InitialJumpVelocity;
+            animator.SetTrigger("JumpTrigger");
+        }
     }
 
     private void Jump()
@@ -449,6 +498,7 @@ public class AdvancedMovementTest : MonoBehaviour
     private void ResetWallJumpValues()
     {
         isWallSliding = false;
+        isWallSlideFalling = false;
         useWallJumpMoveStats = false;
         isWallJumping = false;
         isWallJumpFastFalling = false;
@@ -458,6 +508,171 @@ public class AdvancedMovementTest : MonoBehaviour
         wallJumpFastFallTime = 0f;
         wallJumpTime = 0f;
     }
+
+    private void WallJumpCheck()
+    {
+        if (ShouldApplyPostWallJumpBuffer())
+        {
+            wallJumpPostBufferTimer = MoveStats.WallJumpPostBufferTime;
+        }
+
+        //wall jump fast falling
+        if (InputManager.JumpWasReleased && !isWallSliding && !isTouchingWall && isWallJumping)
+        {
+            if(VerticalVelocity > 0f)
+            {
+                if (isPastWallJumpApexThreshold)
+                {
+                    
+                    isPastWallJumpApexThreshold = false;
+                    isWallJumpFastFalling = true;
+                    wallJumpFastFallTime = MoveStats.TimeForUpwardsCancel;
+
+                    VerticalVelocity = 0f;
+                }
+                else
+                {
+                    isWallJumpFastFalling = true;
+                    wallJumpFastFallReleaseSpeed = VerticalVelocity; 
+                }
+            }
+        }
+        //actual jump with post wall jump buffer time
+        if(InputManager.JumpWasPressed && wallJumpPostBufferTimer > 0f)
+        {
+            InitiateWallJump();
+        }
+    }
+
+    private void InitiateWallJump()
+    {
+        if (!isWallJumping)
+        {
+            isWallJumping = true;
+            useWallJumpMoveStats = true;
+        }
+
+        StopWallSlide();
+        ResetJumpValues();
+        wallJumpTime = 0f;
+
+        VerticalVelocity = MoveStats.InitialWallJumpVelocity;
+
+        int dirMultiplier = 0; //Direction multiplier (whether to move in positive or negative X direction (left and right))
+        Vector2 hitPoint = lastWallHit.collider.ClosestPoint(bodyCollider.bounds.center);
+
+        if(hitPoint.x > transform.position.x)
+        {
+            dirMultiplier = -1;
+        }
+        else{ dirMultiplier = 1; }
+
+        HorizontalVelocity = Mathf.Abs(MoveStats.WallJumpDirection.x) * dirMultiplier;
+
+    }
+
+    public void WallJump()
+    {
+        //APPLY WALL JUMP GRAVITY
+        if (isWallJumping)
+        {
+             //time to take over movement controls while wall jumping
+             wallJumpTime += Time.fixedDeltaTime;
+             if(wallJumpTime >= MoveStats.TimeTillJumpApex)
+            {
+                useWallJumpMoveStats = false;
+            }
+
+            //hit head
+            if (bumpedHead)
+            {
+                isWallJumpFastFalling = true;
+                useWallJumpMoveStats = false;
+            }
+
+            //gravity on ascent
+            if(VerticalVelocity >= 0f)
+            {
+                //apex controls
+                wallJumpApexHeight = Mathf.InverseLerp(MoveStats.WallJumpDirection.y, 0f, VerticalVelocity);
+
+                if(wallJumpApexHeight > MoveStats.ApexThreshold)
+                {
+                    if (!isPastWallJumpApexThreshold)
+                    {
+                        isPastWallJumpApexThreshold = true;
+                        timePastWallJumpApexThreshold = 0f;
+                    }
+
+                    if (isPastWallJumpApexThreshold)
+                    {
+                        timePastWallJumpApexThreshold += Time.fixedDeltaTime;
+                        if(timePastWallJumpApexThreshold < MoveStats.ApexHangTime)
+                        {
+                            VerticalVelocity = 0f;
+                        }
+                        else
+                        {
+                            VerticalVelocity = -0.01f;
+                        }
+                    }
+                }
+
+                //gravity on ascent but not past apex
+                else if (!isWallJumpFastFalling)
+                {
+                    VerticalVelocity += MoveStats.WallJumpGravity * Time.fixedDeltaTime;
+
+                    if (isPastWallJumpApexThreshold)
+                    {
+                        isPastWallJumpApexThreshold = false;
+                    }
+                }
+                
+            }
+            //Gravity on descending
+            else if (!isWallJumpFastFalling)
+            {
+                VerticalVelocity += MoveStats.WallJumpGravity * Time.deltaTime;
+            }
+
+            else if( VerticalVelocity < 0f)
+            {
+                if (!isWallJumpFalling)
+                {
+                    isWallJumpFalling = true;
+                }
+            }
+        }
+
+        //Handle wall jump cut time
+        if (isWallJumpFastFalling)
+        {
+            if(wallJumpFastFallTime >= MoveStats.TimeForUpwardsCancel)
+            {
+                VerticalVelocity += MoveStats.WallJumpGravity * MoveStats.WallJumpGravityOnReleaseMultiplier * Time.fixedDeltaTime;
+            }
+            else if (wallJumpFastFallTime < MoveStats.TimeForUpwardsCancel)
+            {
+                VerticalVelocity = Mathf.Lerp(wallJumpFastFallReleaseSpeed, 0f, (wallJumpFastFallTime / MoveStats.TimeForUpwardsCancel));
+            }
+
+            wallJumpFastFallTime += Time.fixedDeltaTime;
+        }
+    }
+
+    private bool ShouldApplyPostWallJumpBuffer()
+    {
+        if(!isGrounded && (isTouchingWall || isWallSliding))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     #endregion
 
@@ -571,20 +786,24 @@ public class AdvancedMovementTest : MonoBehaviour
 
     private void CountTimers()
     {
-        //test if below methods work with time slow
+
+        //Jump buffer
         jumpBufferTimer -= Time.deltaTime;
 
+        //coyote time
         if (!isGrounded)
         {
             coyoteTimer -= Time.deltaTime;
         }
         else { coyoteTimer = MoveStats.JumpCoyoteTime; }
 
+        // wall jump buffer time
+        if (!ShouldApplyPostWallJumpBuffer())
+        {
+            wallJumpPostBufferTimer -= Time.deltaTime;
+        }
+
     }
 
     #endregion
-
- 
-
 }
-

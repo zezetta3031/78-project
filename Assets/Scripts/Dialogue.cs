@@ -15,11 +15,16 @@ public class Dialogue : MonoBehaviour
     private int index; // The current text string in lines
     public bool typing; // true when the dialogue box is open
     public Animator animator;
+    public GameObject player;
+    public AdvancedMovementTest movementScript;
+    public bool freezePlayerDuringDialogue;
 
 
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        movementScript = player.GetComponent<AdvancedMovementTest>();
         gameObject.SetActive(false);
         textComponent.text = string.Empty;
     }
@@ -41,7 +46,12 @@ public class Dialogue : MonoBehaviour
     }
     public void StartDialogue() // Activates the dialogue box and begins typing
     {
-        animator.SetTrigger("Open Dialogue");  
+
+        animator.SetTrigger("Open Dialogue");
+        if (freezePlayerDuringDialogue)
+        {
+            movementScript.playerFreeze = true;
+        } 
         if (typing == false)
         {
             gameObject.SetActive(true);
@@ -73,6 +83,7 @@ public class Dialogue : MonoBehaviour
         {
             textComponent.text = string.Empty;
             typing = false;
+            movementScript.playerFreeze = false;
             animator.SetTrigger("End Dialogue");
             gameObject.SetActive(false);
         }

@@ -7,6 +7,7 @@ public class DialogueSetter : MonoBehaviour
 {
 
     public String[] Lines;
+    public bool freezePlayer;
     void Start()
     {
         

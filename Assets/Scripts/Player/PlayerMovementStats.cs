@@ -48,7 +48,7 @@ public class PlayerMovementStats : ScriptableObject
     [Range(0.5f, 1f)] public float ApexThreshold = 0.97f;
     [Range(0.01f, 1f)] public float ApexHangTime = 0075f;
 
-    [Header("Jump Bugger")]
+    [Header("Jump Buffer")]
     [Range(0f, 1f)] public float JumpBufferTime = 0.125f;
 
     [Header("Jump Coyote Time")]
