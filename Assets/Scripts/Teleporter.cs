@@ -28,6 +28,9 @@ public class Teleporter : MonoBehaviour
     {
         Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag.Contains("Player")){
+            if(levelChange){    
+                animator.SetTrigger("levelChange");
+            }
             playerObject = other.gameObject;
             playerObject.transform.position = endPosition;
         }
