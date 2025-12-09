@@ -10,6 +10,8 @@ public class Teleporter : MonoBehaviour
     private float yPos;
     public GameObject playerObject;
     public Vector2 endPosition;
+    public bool levelChange;
+    public Animator animator;
     // Start is called before the first frame update
     void Awake()
     {
