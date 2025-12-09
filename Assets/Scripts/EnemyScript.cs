@@ -7,7 +7,9 @@ public class EnemyScript : MonoBehaviour
     public GameObject enemy;
     public new Renderer renderer;
     public GameObject projectilePrefab;
-    public float projectileSpeed = 2f;
+    public float projectileSpeed = 2f
+        
+        ;
     public Transform firePoint;
     public DateTime timeOfLastShot = DateTime.Now;
 
