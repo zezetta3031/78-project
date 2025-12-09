@@ -258,7 +258,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4483158731638955197, guid: 7391ff42270444486bb4082293e439fb, type: 3}
   m_PrefabInstance: {fileID: 175177959}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2088726110}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770be3282440e4a649feea19dbef9596, type: 3}
@@ -1215,6 +1215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  dialogueBox: {fileID: 2088726110}
   projectileSpeed: 10
   firePoint: {fileID: 0}
 --- !u!1 &491035058
@@ -2178,6 +2179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc93d799aa2d40c6a98582bb85c7878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  MovementScript: {fileID: 0}
 --- !u!212 &699273197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5920,6 +5923,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2088726110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3126732282651029251, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+  m_PrefabInstance: {fileID: 175177959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
