@@ -150,6 +150,9 @@ MonoBehaviour:
   textspeed: 0.1
   typing: 0
   animator: {fileID: 7659812324635891272}
+  player: {fileID: 0}
+  movementScript: {fileID: 0}
+  freezePlayerDuringDialogue: 0
 --- !u!1 &5057200790969048384
 GameObject:
   m_ObjectHideFlags: 0
