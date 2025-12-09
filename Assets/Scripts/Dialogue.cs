@@ -24,7 +24,9 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(player);
         movementScript = player.GetComponent<AdvancedMovementTest>();
+        Debug.Log(movementScript);
         gameObject.SetActive(false);
         textComponent.text = string.Empty;
     }
