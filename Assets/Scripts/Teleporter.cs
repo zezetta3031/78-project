@@ -10,6 +10,8 @@ public class Teleporter : MonoBehaviour
     private float yPos;
     public GameObject playerObject;
     public Vector2 endPosition;
+    public bool levelChange;
+    public Animator animator;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,6 +28,9 @@ public class Teleporter : MonoBehaviour
     {
         Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag.Contains("Player")){
+            if(levelChange){    
+                animator.SetTrigger("levelChange");
+            }
             playerObject = other.gameObject;
             playerObject.transform.position = endPosition;
         }
