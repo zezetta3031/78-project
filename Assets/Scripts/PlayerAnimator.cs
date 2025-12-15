@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     public Animator animator;
-    public AdvancedMovementTest MovementScript;
+    public PlayerMovement MovementScript;
     private bool isMoving;
     void Start()
     {
-        MovementScript = GetComponentInParent<AdvancedMovementTest>();
+        MovementScript = GetComponentInParent<PlayerMovement>();
     }
 
     // Update is called once per frame
