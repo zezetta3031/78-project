@@ -16,7 +16,7 @@ public class Dialogue : MonoBehaviour
     public bool typing; // true when the dialogue box is open
     public Animator animator;
     public GameObject player;
-    public AdvancedMovementTest movementScript;
+    public PlayerMovement movementScript;
     public bool freezePlayerDuringDialogue;
 
 
@@ -25,7 +25,7 @@ public class Dialogue : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         Debug.Log(player);
-        movementScript = player.GetComponent<AdvancedMovementTest>();
+        movementScript = player.GetComponent<PlayerMovement>();
         Debug.Log(movementScript);
         gameObject.SetActive(false);
         textComponent.text = string.Empty;
