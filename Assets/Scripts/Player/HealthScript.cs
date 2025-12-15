@@ -18,10 +18,10 @@ public class HealthScript : MonoBehaviour
         _health -= 1;
         if (_health == 2)
         {
-            thirdHeart.GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            thirdHeart.GetComponent<Image>().sprite = emptyHeart;
         } else if (_health == 1)
         {
-            secondHeart.GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            secondHeart.GetComponent<Image>().sprite = emptyHeart;
         }
         else if (_health == 0)
         {
