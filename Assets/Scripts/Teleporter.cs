@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Teleporter : MonoBehaviour
@@ -26,15 +27,29 @@ public class Teleporter : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.tag);
+        // Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag.Contains("Player")){
             if(levelChange){    
-                animator.SetTrigger("levelChange");
+                StartCoroutine(startAnimation(other));
             }
-            playerObject = other.gameObject;
-            playerObject.transform.position = endPosition;
         }
         
+    }
+
+    IEnumerator startAnimation(Collider2D other)
+    {
+        float animationTime = 0.75f;
+        animator.SetTrigger("levelChange");
+        yield return new WaitForSeconds(animationTime);
+        teleportPlayer(other);
+        yield return null;
+    }
+
+
+    public void teleportPlayer(Collider2D other)
+    {
+        playerObject = other.gameObject;
+        playerObject.transform.position = endPosition;
     }
 
 }
