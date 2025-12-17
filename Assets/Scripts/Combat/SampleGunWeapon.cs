@@ -7,9 +7,11 @@ public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public GameObject dialogueBox;
-    public float projectileSpeed = 15f;
+    public float projectileSpeed = 50f;
     public Transform firePoint; // where the projectile spawns (can be the character's position)
     private Dialogue _dialogueScript;
+    public int bouncesAllowed;
+    public int timesBounced;
     
     // Start is called before the first frame update
     void Start()
