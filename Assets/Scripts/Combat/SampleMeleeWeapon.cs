@@ -31,48 +31,16 @@ public class SampleMeleeWeapon : MonoBehaviour
     {
         _isMeleeInProgress = true;
 
-        // --- Determine the direction to the mouse ---
-        Vector3 mouseWorldPos = Camera.main!.ScreenToWorldPoint(Input.mousePosition); // if this null assertion fails, we're fucked. but it should never fail because there should always be a camera.
-        mouseWorldPos.z = 0f;
-        Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
-        Vector2 spawnPos = (Vector2)(firePoint.position) + direction + new Vector2(0f, 0f);
-
-        // --- Determine base angle facing the mouse ---
-        float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // --- Instantiate the melee visual (your bullet prefab) ---
-        GameObject visual = Instantiate(meleeVisualPrefab, spawnPos, Quaternion.identity);
-        visual.transform.localScale *= 2f; // optional, makes it more visible
-        Rigidbody2D rb = visual.GetComponent<Rigidbody2D>();
-        if (rb) rb.simulated = false; // disable physics
-
-        Debug.Log("Melee started");
-
-        // --- Swing in an arc ---
-        float elapsed = 0f;
-        while (elapsed < swipeDuration)
+        if (Input.mousePosition.x < Screen.width / 2f)
         {
-            float t = elapsed / swipeDuration;
-            float currentAngle = Mathf.Lerp(-swipeAngle / 2f, swipeAngle / 2f, t);
-
-            // Compute the position of the visual offset from the player in an arc
-            float totalAngle = baseAngle + currentAngle;
-            Vector3 offset = new Vector3(Mathf.Cos(totalAngle * Mathf.Deg2Rad),
-                Mathf.Sin(totalAngle * Mathf.Deg2Rad),
-                0f) * meleeRange;
+            // perform left melee
             
-            if (offset.y < 0f)
-                offset.y = 0f;
-
-            visual.transform.position = spawnPos + (Vector2)(offset);
-            visual.transform.rotation = Quaternion.Euler(0, 0, totalAngle);
-
-            elapsed += Time.deltaTime;
-            yield return null;
         }
-
-        Destroy(visual);
-        Debug.Log("Melee finished");
+        else
+        {
+            // perform right melee
+        }
+        
 
         yield return new WaitForSeconds(meleeCooldown);
         _isMeleeInProgress = false;
