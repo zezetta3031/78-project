@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class ScriptableTIles : MonoBehaviour
+public class ScriptableTIles : ScriptableObject
 {
+    
+
+
     // Start is called before the first frame update
     void Start()
     {

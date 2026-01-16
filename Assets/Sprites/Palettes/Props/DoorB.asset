@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
   m_Name: DoorB
   m_EditorClassIdentifier: 
-  m_AnimatedSprites: []
+  m_AnimatedSprites:
+  - {fileID: -883212340, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
+  - {fileID: -313726263, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
+  - {fileID: -1612840306, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
+  - {fileID: -866090189, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
