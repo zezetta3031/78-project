@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: New Animated Tile
+  m_Name: DoorT
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -954273125, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
-  - {fileID: -1073602136, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
-  m_MinSpeed: 4
-  m_MaxSpeed: 4
+  - {fileID: -1189498508, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
+  - {fileID: -1630213541, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
+  - {fileID: 507907598, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
+  - {fileID: 592894328, guid: 0f4e40fc2c05f4f7d99d3175d94b6e1c, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
