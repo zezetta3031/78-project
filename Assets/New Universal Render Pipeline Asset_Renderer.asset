@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fac037417a02b641846a79bc2c9ba0d, type: 3}
   m_Name: GiLight2D
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   _event: 250
   _mask:
     serializedVersion: 2
