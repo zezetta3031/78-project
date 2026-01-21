@@ -82,11 +82,20 @@ public class PlayerMovement : MonoBehaviour
     private float dashFastFallTime;
     private float dashFastFallReleaseSpeed;
 
+    [Header("SFX")]
+    [SerializeField] public AudioClip JumpSound;
+    [SerializeField] public AudioClip DoubleJumpSound;
+    [SerializeField] public AudioClip LandingSFX;
+    private AudioSource audioSource; 
+
+
     private void Awake()
     {
         isFacingRight = true;
 
-    rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -208,7 +217,7 @@ public class PlayerMovement : MonoBehaviour
          //landing
         if ((isJumping || isFalling || isWallJumpFalling || isWallJumping || isWallSlideFalling || isWallSliding || isDashFastFalling) && isGrounded && VerticalVelocity <= 0f)
         {
-            Debug.Log("test");
+            // Debug.Log("test");
             ResetJumpValues();
             StopWallSlide();
             ResetWallJumpValues();
@@ -248,6 +257,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void ResetJumpValues()
     {
+        audioSource.clip = LandingSFX;
+        audioSource.Play();
         isJumping = false;
         isFalling = false;
         isFastFalling = false;
@@ -335,6 +346,9 @@ public class PlayerMovement : MonoBehaviour
             if (!isJumping)
             {
                 isJumping = true;
+                audioSource.clip = JumpSound;
+                audioSource.Play();
+                Debug.Log("jump test");
             }
 
             ResetWallJumpValues();
@@ -348,6 +362,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        
         //apply gravity
         if (isJumping)
         {

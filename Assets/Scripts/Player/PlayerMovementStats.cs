@@ -75,6 +75,8 @@ public class PlayerMovementStats : ScriptableObject
     [Range(0.01f,5f)] public float DashGravityOnReleaseMultiplier = 1f;
     [Range(0.02f, 0.3f)] public float DashTimeForUpwardsCancel = 0.027f;
 
+    
+
     [Header("Debug")]
     public bool DebugShowWallHitbox;
 
