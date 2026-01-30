@@ -650,6 +650,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1544650614272011804, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1749059066}
+    - targetCorrespondingSourceObject: {fileID: 1544650614272011804, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1749059068}
+    - targetCorrespondingSourceObject: {fileID: 1544650614272011804, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1749059067}
     - targetCorrespondingSourceObject: {fileID: 2969068313154050964, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1072677379}
@@ -1198,7 +1204,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072677375}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d5cbfd5ff34847cda1d062c59b7eba4, type: 3}
   m_Name: 
@@ -1216,7 +1222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072677375}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9deedef93d114e21bb2d14c52621ef5, type: 3}
   m_Name: 
@@ -1225,8 +1231,8 @@ MonoBehaviour:
   hitboxHeight: 2
   meleeCooldown: 0.4
   meleeRange: 0.7
+  col: {fileID: 0}
   meleeHitboxPrefab: {fileID: 1988454611}
-  firePoint: {fileID: 0}
 --- !u!1 &1228169888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1418,47 @@ MonoBehaviour:
   secondHeart: {fileID: 1794660029}
   thirdHeart: {fileID: 1910868562}
   emptyHeart: {fileID: -825626600, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
+--- !u!114 &1749059067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749059060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9deedef93d114e21bb2d14c52621ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeDuration: 0.2
+  hitboxHeight: 2
+  meleeCooldown: 0.4
+  meleeRange: 0.7
+  col: {fileID: 1749059069}
+  meleeHitboxPrefab: {fileID: 1988454611}
+--- !u!114 &1749059068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749059060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5cbfd5ff34847cda1d062c59b7eba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  dialogueBox: {fileID: 0}
+  projectileSpeed: 10
+  firePoint: {fileID: 0}
+  bouncesAllowed: 0
+  timesBounced: 0
+--- !u!70 &1749059069 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1544650614272011794, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+  m_PrefabInstance: {fileID: 705385091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1762612826
 GameObject:
   m_ObjectHideFlags: 0

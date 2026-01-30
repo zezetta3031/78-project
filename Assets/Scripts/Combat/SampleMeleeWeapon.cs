@@ -9,6 +9,7 @@ public class SampleMeleeWeapon : MonoBehaviour
     public float hitboxHeight = 0.0005f;
     public float meleeCooldown = 0.1f;    // Delay before you can swing again
     public float meleeRange = 2f;
+    public CapsuleCollider2D col;
     public GameObject meleeHitboxPrefab;
 
 
@@ -27,15 +28,20 @@ public class SampleMeleeWeapon : MonoBehaviour
         _isMeleeInProgress = true;
 
         GameObject hitbox = null;
+        
+        Vector2 feetPos = new Vector2(
+            col.bounds.center.x,
+            col.bounds.min.y
+        );
 
         try
         {
             float direction = (Input.mousePosition.x < Screen.width / 2f) ? -1f : 1f;
 
             Vector2 spawnPos =
-                (Vector2)transform.position +                // player position (feet)
+                feetPos +                // player position (feet)
                 Vector2.right * direction * (meleeRange * 0.5f) +  // forward based on direction
-                Vector2.up * -hitboxHeight;                  // static vertical offset
+                Vector2.up * hitboxHeight;                  // static vertical offset
             
             hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
 
@@ -44,6 +50,12 @@ public class SampleMeleeWeapon : MonoBehaviour
                 hb.SetDirection(direction);
             else
                 Debug.LogError("MeleeHitbox2D missing on prefab!");
+            
+            Debug.Log(
+                $"SpawnY: {spawnPos.y} | " +
+                $"TransformY: {hitbox.transform.position.y} | " +
+                $"FeetY: {feetPos.y}"
+            );
         
             yield return new WaitForSecondsRealtime(swipeDuration);
         }
