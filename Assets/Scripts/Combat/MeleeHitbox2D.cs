@@ -13,7 +13,6 @@ public class MeleeHitbox2D : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        BoxCollider2D col = GetComponent<BoxCollider2D>();
         if (col == null) return;
 
         Gizmos.color = Color.red;
@@ -30,7 +29,6 @@ public class MeleeHitbox2D : MonoBehaviour
     
     public void SetDirection(float direction)
     {
-        BoxCollider2D col = GetComponent<BoxCollider2D>();
         col.offset = new Vector2(Mathf.Abs(col.offset.x) * direction, col.offset.y);
     }
 }

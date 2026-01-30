@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SampleMeleeWeapon : MonoBehaviour
@@ -39,7 +40,7 @@ public class SampleMeleeWeapon : MonoBehaviour
             hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
 
             var hb = hitbox.GetComponent<MeleeHitbox2D>();
-            if (hb != null)
+            if (!hb.IsUnityNull())
                 hb.SetDirection(direction);
             else
                 Debug.LogError("MeleeHitbox2D missing on prefab!");
