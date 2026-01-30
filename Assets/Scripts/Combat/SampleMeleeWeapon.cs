@@ -38,7 +38,7 @@ public class SampleMeleeWeapon : MonoBehaviour
         {
             float direction = (Input.mousePosition.x < Screen.width / 2f) ? -1f : 1f;
 
-            Vector2 spawnPos =
+            var spawnPos =
                 feetPos +                // player position (feet)
                 Vector2.right * direction * (meleeRange * 0.5f) +  // forward based on direction
                 Vector2.up * hitboxHeight;                  // static vertical offset
@@ -61,7 +61,7 @@ public class SampleMeleeWeapon : MonoBehaviour
         }
         finally
         {
-            if (hitbox != null)
+            if (!hitbox.IsUnityNull())
                 Destroy(hitbox);
 
             _isMeleeInProgress = false;
