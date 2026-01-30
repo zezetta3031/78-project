@@ -40,7 +40,7 @@ public class SampleMeleeWeapon : MonoBehaviour
 
             var spawnPos =
                 feetPos +                // player position (feet)
-                Vector2.right * direction * (meleeRange * 0.5f) +  // forward based on direction
+                direction * (meleeRange * 0.5f) * Vector2.right +  // forward based on direction
                 Vector2.up * hitboxHeight;                  // static vertical offset
             
             hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
