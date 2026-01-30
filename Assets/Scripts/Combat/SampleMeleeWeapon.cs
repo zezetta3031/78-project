@@ -6,23 +6,16 @@ public class SampleMeleeWeapon : MonoBehaviour
 {
     public float swipeDuration = 0.2f;    // How long the swipe lasts
     public float hitboxHeight = 0.0005f;
-    public float meleeCooldown = 0.4f;    // Delay before you can swing again
+    public float meleeCooldown = 0.1f;    // Delay before you can swing again
     public float meleeRange = 2f;
     public GameObject meleeHitboxPrefab;
 
 
     private bool _isMeleeInProgress;
-    public Transform firePoint;
-
-    void Start()
-    {
-        firePoint = transform;
-    }
 
     void Update()
     {
-        // Middle mouse click (2). You can change to 0 or 1 for left/right clicks
-        if (Input.GetMouseButtonDown(2) && !_isMeleeInProgress)
+        if (Input.GetMouseButtonDown(1) && !_isMeleeInProgress)
         {
             StartCoroutine(Melee());
         }
@@ -41,7 +34,7 @@ public class SampleMeleeWeapon : MonoBehaviour
             Vector2 spawnPos =
                 (Vector2)transform.position +                // player position (feet)
                 Vector2.right * direction * (meleeRange * 0.5f) +  // forward based on direction
-                Vector2.up * hitboxHeight;                  // static vertical offset
+                Vector2.up * -hitboxHeight;                  // static vertical offset
             
             hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
 
