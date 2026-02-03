@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,5 +31,21 @@ public class MeleeHitbox2D : MonoBehaviour
     public void SetDirection(float direction, float playerYPos)
     {
         col.offset = new Vector2(Mathf.Abs(col.offset.x) * direction, playerYPos);
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Dialogue Trigger") || other.gameObject.name.Contains("Bullet"))
+            return;
+        EnemyScript enemy = other.GetComponent<EnemyScript>();
+        if (enemy != null)
+        {
+            enemy.Inflict(0.25); // Apply damage
+            Debug.Log("Detected enemy");
+        }
+        else
+        {
+            Debug.Log("No enemy script found on object tagged as enemy");
+        }
     }
 }
