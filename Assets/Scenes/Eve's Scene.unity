@@ -589,6 +589,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1544650614272011794, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1544650614272011795, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.9041159
@@ -656,12 +660,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1544650614272011804, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1749059067}
-    - targetCorrespondingSourceObject: {fileID: 2969068313154050964, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1072677379}
-    - targetCorrespondingSourceObject: {fileID: 2969068313154050964, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1072677383}
   m_SourcePrefab: {fileID: 100100000, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
 --- !u!1 &726943338
 GameObject:
@@ -1192,47 +1190,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1072677375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2969068313154050964, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
-  m_PrefabInstance: {fileID: 705385091}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1072677379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072677375}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5cbfd5ff34847cda1d062c59b7eba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
-  dialogueBox: {fileID: 0}
-  projectileSpeed: 10
-  firePoint: {fileID: 0}
-  bouncesAllowed: 0
-  timesBounced: 0
---- !u!114 &1072677383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072677375}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9deedef93d114e21bb2d14c52621ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swipeDuration: 0.2
-  hitboxHeight: 2
-  meleeCooldown: 0.4
-  meleeRange: 0.7
-  col: {fileID: 0}
-  meleeHitboxPrefab: {fileID: 1988454611}
 --- !u!1 &1228169888
 GameObject:
   m_ObjectHideFlags: 0

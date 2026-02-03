@@ -27,8 +27,8 @@ public class MeleeHitbox2D : MonoBehaviour
         Gizmos.DrawWireCube(worldCenter, worldSize);
     }
     
-    public void SetDirection(float direction)
+    public void SetDirection(float direction, float playerYPos)
     {
-        col.offset = new Vector2(Mathf.Abs(col.offset.x) * direction, col.offset.y);
+        col.offset = new Vector2(Mathf.Abs(col.offset.x) * direction, playerYPos);
     }
 }

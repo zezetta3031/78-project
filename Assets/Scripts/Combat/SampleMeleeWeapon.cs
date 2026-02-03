@@ -39,23 +39,16 @@ public class SampleMeleeWeapon : MonoBehaviour
             float direction = (Input.mousePosition.x < Screen.width / 2f) ? -1f : 1f;
 
             var spawnPos =
-                feetPos +                // player position (feet)
-                direction * (meleeRange * 0.5f) * Vector2.right +  // forward based on direction
-                Vector2.up * hitboxHeight;                  // static vertical offset
+                feetPos + // player position (feet)
+                direction * (meleeRange * 1.5f) * Vector2.right;
             
             hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
 
             var hb = hitbox.GetComponent<MeleeHitbox2D>();
             if (!hb.IsUnityNull())
-                hb.SetDirection(direction);
+                hb.SetDirection(direction, col.bounds.center.y);
             else
                 Debug.LogError("MeleeHitbox2D missing on prefab!");
-            
-            Debug.Log(
-                $"SpawnY: {spawnPos.y} | " +
-                $"TransformY: {hitbox.transform.position.y} | " +
-                $"FeetY: {feetPos.y}"
-            );
         
             yield return new WaitForSecondsRealtime(swipeDuration);
         }
