@@ -48,12 +48,18 @@ public class EnemyScript : MonoBehaviour
                 timeOfLastShot = DateTime.Now;
             }
 
-            if (enemyType == EnemyType.Standard)
+
+            switch (enemyType)
             {
-                // cool standard enemy stuff
-            } else if (enemyType == EnemyType.Boss)
-            {
-                // cool boss stuff
+                case EnemyType.Standard:
+                    // cool standard enemy stuff
+                    break;
+                case EnemyType.Boss:
+                    // cool boss stuff
+                    break;
+                default:
+                    Debug.Log("Unknown enemy type encountered. Why are you breaking stuff?");
+                    break;
             }
         }
         if (health <= 0)
