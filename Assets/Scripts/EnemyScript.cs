@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 2f;
     public Transform firePoint;
+    public EnemyType enemyType;
     public DateTime timeOfLastShot = DateTime.Now;
 
     public void Inflict(double dmg)
@@ -26,7 +28,7 @@ public class EnemyScript : MonoBehaviour
         if (renderer.isVisible)
         {
             var player = GameObject.FindGameObjectWithTag("Player");
-            if (player.activeInHierarchy && timeOfLastShot.AddSeconds(1.0) < DateTime.Now)
+            if (player.activeInHierarchy && timeOfLastShot.AddSeconds(0.5) < DateTime.Now)
             {
                 Vector2 direction = player.transform.position - transform.position;
                 direction.Normalize();
@@ -45,10 +47,25 @@ public class EnemyScript : MonoBehaviour
                 rb.velocity = direction * projectileSpeed;
                 timeOfLastShot = DateTime.Now;
             }
+
+            if (enemyType == EnemyType.Standard)
+            {
+                // cool standard enemy stuff
+            } else if (enemyType == EnemyType.Boss)
+            {
+                // cool boss stuff
+            }
         }
         if (health <= 0)
         {
             Destroy(enemy);
         }
+    }
+
+    // TODO: Implement stuff based on the set value.
+    public enum EnemyType
+    {
+        Standard,
+        Boss
     }
 }
