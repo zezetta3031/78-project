@@ -6,7 +6,8 @@ public class EnemyScript : MonoBehaviour
 {
     public double health = 1.0;
     public GameObject enemy;
-    public new Renderer renderer;
+    private new Renderer renderer;
+    private GameObject player;
     public GameObject projectilePrefab;
     public float projectileSpeed = 2f;
     public Transform firePoint;
@@ -21,13 +22,13 @@ public class EnemyScript : MonoBehaviour
     private void Start()
     {
         renderer = GetComponent<Renderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
         if (renderer.isVisible)
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
             if (player.activeInHierarchy && timeOfLastShot.AddSeconds(0.5) < DateTime.Now)
             {
                 Vector2 direction = player.transform.position - transform.position;
