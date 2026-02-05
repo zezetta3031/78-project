@@ -8,15 +8,6 @@ public class DialogueInteraction : MonoBehaviour
     public GameObject dialogueBox;
     public DialogueSetter dialogueSetterScript; // the script on a dialogueSetter gameobject
     public Dialogue dialogueScript; // the overall dialogue box object
-    void Start()
-    {
-
-    }
-    void Update()
-    {
-  
-
-    }
 
     public void OnTriggerEnter2D(Collider2D other) // When the player enters a dialogue trigger
     {
