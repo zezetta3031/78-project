@@ -20,7 +20,7 @@ public class DialogueInteraction : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other) // When the player enters a dialogue trigger
     {
-        if (other.tag == "Dialogue Trigger" && dialogueScript.typing == false)
+        if (other.CompareTag("Dialogue Trigger") && dialogueScript.typing == false)
         {
             dialogueBox = other.gameObject;
             dialogueSetterScript = dialogueBox.GetComponent<DialogueSetter>();
