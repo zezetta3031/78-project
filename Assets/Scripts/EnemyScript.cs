@@ -1,14 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyScript : MonoBehaviour
 {
     public double health = 1.0;
     public GameObject enemy;
-    public new Renderer renderer;
+    private new Renderer renderer;
+    private GameObject player;
     public GameObject projectilePrefab;
     public float projectileSpeed = 2f;
     public Transform firePoint;
+    public EnemyType enemyType;
     public DateTime timeOfLastShot = DateTime.Now;
 
     public void Inflict(double dmg)
@@ -19,14 +22,14 @@ public class EnemyScript : MonoBehaviour
     private void Start()
     {
         renderer = GetComponent<Renderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
         if (renderer.isVisible)
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
-            if (player.activeInHierarchy && timeOfLastShot.AddSeconds(1.0) < DateTime.Now)
+            if (player.activeInHierarchy && timeOfLastShot.AddSeconds(0.5) < DateTime.Now)
             {
                 Vector2 direction = player.transform.position - transform.position;
                 direction.Normalize();
@@ -45,10 +48,31 @@ public class EnemyScript : MonoBehaviour
                 rb.velocity = direction * projectileSpeed;
                 timeOfLastShot = DateTime.Now;
             }
+
+
+            switch (enemyType)
+            {
+                case EnemyType.Standard:
+                    // cool standard enemy stuff
+                    break;
+                case EnemyType.Boss:
+                    // cool boss stuff
+                    break;
+                default:
+                    Debug.Log("Unknown enemy type encountered. Why are you breaking stuff?");
+                    break;
+            }
         }
         if (health <= 0)
         {
             Destroy(enemy);
         }
+    }
+
+    // TODO: Implement stuff based on the set value.
+    public enum EnemyType
+    {
+        Standard,
+        Boss
     }
 }
