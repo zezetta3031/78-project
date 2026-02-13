@@ -6,19 +6,15 @@ using UnityEngine;
 public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public GameObject dialogueBox;
     public float projectileSpeed = 2f;
     public Transform firePoint; // where the projectile spawns (can be the character's position)
     private Dialogue _dialogueScript;
-    public int bouncesAllowed;
-    public int timesBounced;
     private DateTime _lastShotFired = DateTime.Now;
     
     // Start is called before the first frame update
     void Start()
     {
         firePoint = transform;
-        _dialogueScript = dialogueBox.GetComponent<Dialogue>();
     }
 
     // Update is called once per frame
