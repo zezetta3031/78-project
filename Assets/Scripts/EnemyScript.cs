@@ -32,31 +32,28 @@ public class EnemyScript : MonoBehaviour
     {
         if (renderer.isVisible)
         {
-            if (player.activeInHierarchy && timeOfLastShot.AddSeconds(0.5) < DateTime.Now)
-            {
-                Vector2 direction = player.transform.position - transform.position;
-                direction.Normalize();
-                // Instantiate projectile
-                
-                Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
-                GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
-
-                // Set projectile rotation to face the direction
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
-        
-                // Apply velocity
-                Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-                rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-                rb.velocity = direction * projectileSpeed;
-                timeOfLastShot = DateTime.Now;
-            }
-
-
             switch (enemyType)
             {
                 case EnemyType.Standard:
-                    // cool standard enemy stuff
+                    if (player.activeInHierarchy && timeOfLastShot.AddSeconds(0.5) < DateTime.Now)
+                    {
+                        Vector2 direction = player.transform.position - transform.position;
+                        direction.Normalize();
+                        // Instantiate projectile
+                
+                        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
+                        GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+                        // Set projectile rotation to face the direction
+                        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
+        
+                        // Apply velocity
+                        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+                        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                        rb.velocity = direction * projectileSpeed;
+                        timeOfLastShot = DateTime.Now;
+                    }
                     break;
                 case EnemyType.Boss:
                     // cool boss stuff
