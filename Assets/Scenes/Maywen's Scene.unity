@@ -12241,12 +12241,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9deedef93d114e21bb2d14c52621ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeAngle: 120
   swipeDuration: 0.2
+  hitboxHeight: 0.0005
   meleeCooldown: 0.4
   meleeRange: 0.7
-  meleeVisualPrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
-  firePoint: {fileID: 0}
+  col: {fileID: 0}
+  meleeHitboxPrefab: {fileID: 0}
 --- !u!114 &265804379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14392,10 +14392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 385083393}
-  renderer: {fileID: 0}
   projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 385083394}
+  enemyType: 0
 --- !u!95 &385083397
 Animator:
   serializedVersion: 5
@@ -15060,6 +15060,7 @@ GameObject:
   - component: {fileID: 786974664}
   - component: {fileID: 786974663}
   - component: {fileID: 786974662}
+  - component: {fileID: 786974665}
   m_Layer: 3
   m_Name: Door L1R2 (1)
   m_TagString: Untagged
@@ -15076,8 +15077,8 @@ Transform:
   m_GameObject: {fileID: 786974660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -125.76407, y: 1.369483, z: 0.24561718}
-  m_LocalScale: {x: 1.7652705, y: 2.9312615, z: 1}
+  m_LocalPosition: {x: -126.6052, y: 0.8688, z: 0.24561718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 11717221}
@@ -15196,6 +15197,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &786974665
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786974660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 547028b726f8c43df97eae7729425fd8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &839365445
 GameObject:
   m_ObjectHideFlags: 0
@@ -15492,10 +15514,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 967069484}
-  renderer: {fileID: 0}
   projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 967069485}
+  enemyType: 0
 --- !u!95 &967069488
 Animator:
   serializedVersion: 5
