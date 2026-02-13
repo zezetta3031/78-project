@@ -12,7 +12,9 @@ public class EnemyScript : MonoBehaviour
     public float projectileSpeed = 2f;
     public Transform firePoint;
     public EnemyType enemyType;
-    public DateTime timeOfLastShot = DateTime.Now;
+    private DateTime timeOfLastShot = DateTime.Now;
+    private DateTime timeOfLastBossBurst = DateTime.Now;
+    private int bossBurstCycleCount = 0;
     public GameObject enemyBoundaryLeft;
     public GameObject enemyBoundaryRight;
     private bool _isWalkingLeft; 
@@ -55,8 +57,32 @@ public class EnemyScript : MonoBehaviour
                         timeOfLastShot = DateTime.Now;
                     }
                     break;
-                case EnemyType.Boss:
-                    // cool boss stuff
+                case EnemyType.FirstBoss:
+                    if (player.activeInHierarchy && (timeOfLastBossBurst.AddSeconds(3.0) < DateTime.Now || (timeOfLastShot.AddSeconds(0.1) < DateTime.Now && bossBurstCycleCount <= 3)))
+                    {
+                        Vector2 direction = player.transform.position - transform.position;
+                        direction.Normalize();
+                        // Instantiate projectile
+                
+                        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
+                        GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+                        // Set projectile rotation to face the direction
+                        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
+        
+                        // Apply velocity
+                        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+                        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                        rb.velocity = direction * projectileSpeed;
+                        timeOfLastShot = DateTime.Now;
+                        
+                        timeOfLastBossBurst = DateTime.Now;
+                        bossBurstCycleCount++;
+                    }
+                    
+                    if (bossBurstCycleCount == 3)
+                        bossBurstCycleCount = 0;
                     break;
                 default:
                     Debug.Log("Unknown enemy type encountered. Why are you breaking stuff?");
@@ -95,6 +121,6 @@ public class EnemyScript : MonoBehaviour
     public enum EnemyType
     {
         Standard,
-        Boss
+        FirstBoss
     }
 }
