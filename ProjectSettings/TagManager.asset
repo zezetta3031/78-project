@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dialogue Trigger
   - Enemy
+  - Enemy Boundary
   layers:
   - Default
   - TransparentFX
