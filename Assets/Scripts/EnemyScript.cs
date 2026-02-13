@@ -13,6 +13,9 @@ public class EnemyScript : MonoBehaviour
     public Transform firePoint;
     public EnemyType enemyType;
     public DateTime timeOfLastShot = DateTime.Now;
+    public GameObject enemyBoundaryLeft;
+    public GameObject enemyBoundaryRight;
+    private bool _isWalkingLeft; 
 
     public void Inflict(double dmg)
     {
@@ -63,10 +66,32 @@ public class EnemyScript : MonoBehaviour
                     break;
             }
         }
+        
         if (health <= 0)
         {
             Destroy(enemy);
         }
+
+        if (!enemyBoundaryLeft || !enemyBoundaryRight)
+            return;
+        
+        if (_isWalkingLeft)
+        {
+            enemy.transform.position += Vector3.left * 0.001f;
+        }
+        else
+        {
+            enemy.transform.position += Vector3.left * 0.001f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.name);
+        if (!other.CompareTag("Enemy Boundary"))
+            return;
+        
+        _isWalkingLeft = !_isWalkingLeft;
     }
 
     // TODO: Implement stuff based on the set value.
