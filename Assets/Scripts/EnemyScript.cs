@@ -81,7 +81,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            enemy.transform.position += Vector3.left * 0.001f;
+            enemy.transform.position += Vector3.right * 0.001f;
         }
     }
 
