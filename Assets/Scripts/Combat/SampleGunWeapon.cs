@@ -42,7 +42,7 @@ public class SampleGunWeapon : MonoBehaviour
 
         // Calculate direction from firePoint to mouse
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
-        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
+        Vector3 spawnPos = firePoint.position + (Vector3)direction;
 
         // Instantiate projectile
         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
