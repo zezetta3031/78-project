@@ -99,20 +99,31 @@ public class EnemyScript : MonoBehaviour
 
         if (!shouldMove)
             return;
-        
-        if (_isWalkingLeft)
+
+        switch (enemyType)
         {
-            enemy.transform.position += Vector3.left * 0.001f;
-        }
-        else
-        {
-            enemy.transform.position += Vector3.right * 0.001f;
+            case EnemyType.Standard:
+                if (_isWalkingLeft)
+                {
+                    enemy.transform.position += Vector3.left * 0.001f;
+                }
+                else
+                {
+                    enemy.transform.position += Vector3.right * 0.001f;
+                }
+        
+                if (enemyBoundaryLeft >= enemy.transform.position.x && _isWalkingLeft) 
+                    _isWalkingLeft = false;
+                else if (enemyBoundaryRight <= enemy.transform.position.x && !_isWalkingLeft)
+                    _isWalkingLeft = true;
+                break;
+            case EnemyType.FirstBoss:
+                // TODO: Make this slide on rail at random intervals and distances
+            default:
+                break;
         }
         
-        if (enemyBoundaryLeft >= enemy.transform.position.x && _isWalkingLeft) 
-            _isWalkingLeft = false;
-        else if (enemyBoundaryRight <= enemy.transform.position.x && !_isWalkingLeft)
-            _isWalkingLeft = true;
+        
     }
     
 
