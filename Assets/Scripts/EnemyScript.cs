@@ -12,12 +12,13 @@ public class EnemyScript : MonoBehaviour
     public float projectileSpeed = 2f;
     public Transform firePoint;
     public EnemyType enemyType;
+    public bool shouldMove;
     private DateTime timeOfLastShot = DateTime.Now;
     private DateTime timeOfLastBossBurst = DateTime.Now;
     private int bossBurstCycleCount = 0;
-    public GameObject enemyBoundaryLeft;
-    public GameObject enemyBoundaryRight;
-    private bool _isWalkingLeft; 
+    public float enemyBoundaryLeft;
+    public float enemyBoundaryRight;
+    private bool _isWalkingLeft = true; 
 
     public void Inflict(double dmg)
     {
@@ -95,7 +96,8 @@ public class EnemyScript : MonoBehaviour
             Destroy(enemy);
         }
 
-        if (!enemyBoundaryLeft || !enemyBoundaryRight)
+
+        if (!shouldMove)
             return;
         
         if (_isWalkingLeft)
@@ -106,16 +108,13 @@ public class EnemyScript : MonoBehaviour
         {
             enemy.transform.position += Vector3.right * 0.001f;
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log(other.name);
-        if (!other.CompareTag("Enemy Boundary"))
-            return;
         
-        _isWalkingLeft = !_isWalkingLeft;
+        if (enemyBoundaryLeft >= enemy.transform.position.x && _isWalkingLeft) 
+            _isWalkingLeft = false;
+        else if (enemyBoundaryRight <= enemy.transform.position.x && !_isWalkingLeft)
+            _isWalkingLeft = true;
     }
+    
 
     // TODO: Implement stuff based on the set value.
     public enum EnemyType
