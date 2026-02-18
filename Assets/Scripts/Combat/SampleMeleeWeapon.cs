@@ -1,27 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SampleMeleeWeapon : MonoBehaviour
 {
-    public float swipeAngle = 90f;        // Total angle of the swipe
     public float swipeDuration = 0.2f;    // How long the swipe lasts
-    public float meleeCooldown = 0.4f;    // Delay before you can swing again
-    public float meleeRange = 1f;
-    public GameObject meleeVisualPrefab;
+    public float hitboxHeight = 0.0005f;
+    public float meleeCooldown = 0.1f;    // Delay before you can swing again
+    public float meleeRange = 2f;
+    public CapsuleCollider2D col;
+    public GameObject meleeHitboxPrefab;
+
 
     private bool _isMeleeInProgress;
-    public Transform firePoint;
-
-    void Start()
-    {
-        firePoint = transform;
-    }
 
     void Update()
     {
-        // Middle mouse click (2). You can change to 0 or 1 for left/right clicks
-        if (Input.GetMouseButtonDown(2) && !_isMeleeInProgress)
+        if (Input.GetMouseButtonDown(1) && !_isMeleeInProgress)
         {
             StartCoroutine(Melee());
         }
@@ -31,19 +27,40 @@ public class SampleMeleeWeapon : MonoBehaviour
     {
         _isMeleeInProgress = true;
 
-        if (Input.mousePosition.x < Screen.width / 2f)
-        {
-            // perform left melee
-            
-        }
-        else
-        {
-            // perform right melee
-        }
+        GameObject hitbox = null;
         
+        Vector2 feetPos = new Vector2(
+            col.bounds.center.x,
+            col.bounds.min.y
+        );
 
-        yield return new WaitForSeconds(meleeCooldown);
-        _isMeleeInProgress = false;
+        try
+        {
+            float direction = (Input.mousePosition.x < Screen.width / 2f) ? -1f : 1f;
+
+            var spawnPos =
+                feetPos + // player position (feet)
+                direction * (meleeRange * 1.5f) * Vector2.right;
+            
+            hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
+
+            var hb = hitbox.GetComponent<MeleeHitbox2D>();
+            if (!hb.IsUnityNull())
+                hb.SetDirection(direction, col.bounds.center.y);
+            else
+                Debug.LogError("MeleeHitbox2D missing on prefab!");
+        
+            yield return new WaitForSecondsRealtime(swipeDuration);
+        }
+        finally
+        {
+            if (!hitbox.IsUnityNull())
+                Destroy(hitbox);
+
+            _isMeleeInProgress = false;
+        }
+
+        yield return new WaitForSecondsRealtime(meleeCooldown);
     }
 }
 

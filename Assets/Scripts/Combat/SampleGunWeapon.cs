@@ -6,26 +6,27 @@ using UnityEngine;
 public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public GameObject dialogueBox;
-    public float projectileSpeed = 50f;
+    public float projectileSpeed = 2f;
     public Transform firePoint; // where the projectile spawns (can be the character's position)
     private Dialogue _dialogueScript;
-    public int bouncesAllowed;
-    public int timesBounced;
+    private DateTime _lastShotFired = DateTime.Now;
     
     // Start is called before the first frame update
     void Start()
     {
         firePoint = transform;
-        _dialogueScript = dialogueBox.GetComponent<Dialogue>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !_dialogueScript.typing)
+        if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            if (_lastShotFired.AddSeconds(0.25) < DateTime.Now)
+            {
+                Shoot();
+                _lastShotFired = DateTime.Now;
+            }
         }
     }
 
@@ -36,8 +37,8 @@ public class SampleGunWeapon : MonoBehaviour
         mouseWorldPos.z = 0f;
 
         // Calculate direction from firePoint to mouse
-        Vector2 direction = (mouseWorldPos - firePoint.position).normalized * 1.1f;
-        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
+        Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
+        Vector3 spawnPos = firePoint.position + (Vector3)direction;
 
         // Instantiate projectile
         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);

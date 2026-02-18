@@ -270,11 +270,11 @@ public class PlayerMovement : MonoBehaviour
         //When we press jump
         if (InputManager.JumpWasPressed)
         {
-            if( isWallSlideFalling && wallJumpPostBufferTimer >= 0f)
+            if(isWallSlideFalling && wallJumpPostBufferTimer >= 0f)
             {
                 return;
             }
-            else if(isWallSliding || (isTouchingWall && !isGrounded))
+            if(isWallSliding || (isTouchingWall && !isGrounded))
             {
                 return;
             }
@@ -348,7 +348,6 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
                 audioSource.clip = JumpSound;
                 audioSource.Play();
-                Debug.Log("jump test");
             }
 
             ResetWallJumpValues();
