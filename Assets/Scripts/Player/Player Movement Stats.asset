@@ -39,7 +39,7 @@ MonoBehaviour:
   ApexThreshold: 0.67
   ApexHangTime: 0.02
   JumpBufferTime: 0.125
-  JumpCoyoteTime: 0.559
+  JumpCoyoteTime: 0.107
   WallSlideSpeed: 5
   WallSlideDecelerationSpeed: 9.2
   WallJumpDirection: {x: -10, y: 4.5}
