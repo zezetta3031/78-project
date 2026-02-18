@@ -12260,11 +12260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
-  dialogueBox: {fileID: 266670900}
   projectileSpeed: 10
   firePoint: {fileID: 0}
-  bouncesAllowed: 0
-  timesBounced: 0
 --- !u!61 &265804380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14396,6 +14393,9 @@ MonoBehaviour:
   projectileSpeed: 2
   firePoint: {fileID: 385083394}
   enemyType: 0
+  shouldMove: 0
+  enemyBoundaryLeft: 0
+  enemyBoundaryRight: 0
 --- !u!95 &385083397
 Animator:
   serializedVersion: 5
@@ -15518,6 +15518,9 @@ MonoBehaviour:
   projectileSpeed: 2
   firePoint: {fileID: 967069485}
   enemyType: 0
+  shouldMove: 0
+  enemyBoundaryLeft: 0
+  enemyBoundaryRight: 0
 --- !u!95 &967069488
 Animator:
   serializedVersion: 5
