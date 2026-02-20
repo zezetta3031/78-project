@@ -1,6 +1,10 @@
 using System;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -40,16 +44,14 @@ public class EnemyScript : MonoBehaviour
                 case EnemyType.Standard:
                     if (player.activeInHierarchy && timeOfLastShot.AddSeconds(0.5) < DateTime.Now)
                     {
-                        Vector2 direction = player.transform.position - transform.position;
-                        direction.Normalize();
+                        Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
                         // Instantiate projectile
                 
                         Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
                         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
 
                         // Set projectile rotation to face the direction
-                        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
+                        projectile.transform.rotation = CalculateShotRotation(direction.x, direction.y);
         
                         // Apply velocity
                         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
@@ -61,16 +63,14 @@ public class EnemyScript : MonoBehaviour
                 case EnemyType.FirstBoss:
                     if (player.activeInHierarchy && (timeOfLastBossBurst.AddSeconds(3.0) < DateTime.Now || (timeOfLastShot.AddSeconds(0.1) < DateTime.Now && bossBurstCycleCount <= 3)))
                     {
-                        Vector2 direction = player.transform.position - transform.position;
-                        direction.Normalize();
+                        Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
                         // Instantiate projectile
                 
                         Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
                         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
 
                         // Set projectile rotation to face the direction
-                        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
+                        projectile.transform.rotation = CalculateShotRotation(direction.x, direction.y);
         
                         // Apply velocity
                         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
@@ -132,5 +132,15 @@ public class EnemyScript : MonoBehaviour
     {
         Standard,
         FirstBoss
+    }
+
+    public static Quaternion CalculateShotRotation(float x, float y)
+    {
+        return Quaternion.Euler(0, 0, Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+    }
+
+    public static Vector2 CalculateShotDirection(Vector3 playerTransform, Vector3 enemyTransform)
+    {
+        return (playerTransform - enemyTransform).normalized;
     }
 }
