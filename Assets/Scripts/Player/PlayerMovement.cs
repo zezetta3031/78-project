@@ -21,13 +21,14 @@ public class PlayerMovement : MonoBehaviour
     //Movement variables
     public float HorizontalVelocity { get; private set; }
     public bool isFacingRight{ get; private set; }
+    public bool shouldChangeDir;
 
     //Collision check variables
     private RaycastHit2D groundHit;
     private RaycastHit2D headHit;
     private RaycastHit2D wallHit;
     private RaycastHit2D lastWallHit;
-    public bool isGrounded { get; private set; }
+    public bool isGrounded;
     private bool bumpedHead;
     private bool isTouchingWall;
 
@@ -91,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        shouldChangeDir = true;
         isFacingRight = true;
 
         rb = GetComponent<Rigidbody2D>();
@@ -100,6 +102,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (isTouchingWall)
+        {
+            shouldChangeDir = false;
+        }
+        else
+        {
+            shouldChangeDir = true;
+        }
         CountTimers();
         JumpChecks();
         LandCheck();
@@ -196,15 +206,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Turn(bool turnRight)
     {
-        if (turnRight)
-        {
-            isFacingRight = true;
-            transform.Rotate(0, 180, 0);
-        }
-        else
-        {
-            isFacingRight = false;
-            transform.Rotate(0, -180, 0);
+        if(shouldChangeDir){
+            if (turnRight)
+            {
+                isFacingRight = true;
+                transform.Rotate(0, 180, 0);
+            }
+            else
+            {
+                isFacingRight = false;
+                transform.Rotate(0, -180, 0);
+            }
         }
     }
 
@@ -528,6 +540,7 @@ public class PlayerMovement : MonoBehaviour
         if (ShouldApplyPostWallJumpBuffer())
         {
             wallJumpPostBufferTimer = MoveStats.WallJumpPostBufferTime;
+           
         }
 
         //wall jump fast falling
@@ -582,6 +595,9 @@ public class PlayerMovement : MonoBehaviour
         else{ dirMultiplier = 1; }
 
         HorizontalVelocity = Mathf.Abs(MoveStats.WallJumpDirection.x) * dirMultiplier;
+
+        animator.SetTrigger("WallJumpTrigger");
+        
 
     }
 

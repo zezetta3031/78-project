@@ -26,6 +26,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool("AnimIsGrounded", MovementScript.isGrounded);
         animator.SetBool("AnimIsFastFalling", MovementScript.isFastFalling);
         animator.SetBool("AnimIsJumping", MovementScript.isJumping);
+        animator.SetBool("AnimIsWallSliding", MovementScript.isWallSliding);
         if (MovementScript.HorizontalVelocity > 1 || MovementScript.HorizontalVelocity < -1)
         {
             isMoving = true;
