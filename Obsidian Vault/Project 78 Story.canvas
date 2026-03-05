@@ -1,0 +1,39 @@
+{
+	"nodes":[
+		{"id":"801f9855c5182e00","type":"text","text":"- Pops up initially when level starts\n```You can use AD to move around and space to Jump```\n```","x":-67,"y":-100,"width":250,"height":220},
+		{"id":"376c952cdee41d0d","type":"text","text":"```\nThe guards! I have to kill them... and FAST!\n```","x":340,"y":-100,"width":250,"height":120},
+		{"id":"526a935f2bcb117c","type":"text","text":"# Level  1\n","x":340,"y":-240,"width":250,"height":70},
+		{"id":"0b35c2295192b319","type":"text","text":"# Tutorial\n","x":-67,"y":-245,"width":250,"height":80},
+		{"id":"ee75bd60bad9e0ff","type":"text","text":"# Level 2","x":773,"y":-235,"width":250,"height":60},
+		{"id":"34f2045e379a044e","type":"text","text":"# Project 78 Story\n","x":-460,"y":-235,"width":250,"height":60},
+		{"id":"d1a4408a89ef0faa","type":"text","text":"```\nA turret! I have to take it out...\n```","x":340,"y":138,"width":250,"height":72},
+		{"id":"731e922975f7c267","type":"text","text":"# Level 3","x":1180,"y":-235,"width":250,"height":60},
+		{"id":"72692c885fe15222","type":"text","text":"```\n78: Oh look... another experiment\n87: Good to see someone else friendly. Want to help me get out of here?\n78: Absolutely \n```","x":773,"y":-74,"width":250,"height":274},
+		{"id":"aa2de28c2d21e8a4","type":"text","text":"```\n78: You seem really cool.\n87: You do too.\n78: Wanna grab a drink after get out?\n87: 100% ;)\n```","x":1180,"y":-71,"width":250,"height":209},
+		{"id":"f7cb32262f844fa6","type":"text","text":"```\nPress LMB (Mouse 1) to shoot\n```","x":-67,"y":380,"width":250,"height":103},
+		{"id":"9ba3eaf23803d23e","type":"text","text":"```\nThe glass is broken... I'm free... but the alarm...\n```","x":-67,"y":160,"width":250,"height":200},
+		{"id":"98bfaded609541ca","x":1180,"y":230,"width":250,"height":60,"type":"text","text":"# TODO: Add more"},
+		{"id":"90fb12e5578aa0f2","x":1572,"y":-235,"width":250,"height":60,"type":"text","text":"# Level 4"},
+		{"id":"e1a5c256f7c04bdb","x":1572,"y":-40,"width":250,"height":60,"type":"text","text":"# TODO: Add more"},
+		{"id":"0a528a1166bed80a","x":1976,"y":-235,"width":250,"height":60,"type":"text","text":"# Level 5"},
+		{"id":"e04a5e96add6e991","x":1976,"y":-40,"width":250,"height":60,"type":"text","text":"# TODO: Add more"}
+	],
+	"edges":[
+		{"id":"296c999f58d12ca3","fromNode":"0b35c2295192b319","fromSide":"bottom","toNode":"801f9855c5182e00","toSide":"top"},
+		{"id":"01c529c9bdc446e2","fromNode":"801f9855c5182e00","fromSide":"bottom","toNode":"9ba3eaf23803d23e","toSide":"top"},
+		{"id":"f0fd71c33fff992e","fromNode":"9ba3eaf23803d23e","fromSide":"bottom","toNode":"f7cb32262f844fa6","toSide":"top"},
+		{"id":"2f4e213001e98537","fromNode":"0b35c2295192b319","fromSide":"right","toNode":"526a935f2bcb117c","toSide":"left"},
+		{"id":"37f38a2fca69bd76","fromNode":"526a935f2bcb117c","fromSide":"bottom","toNode":"376c952cdee41d0d","toSide":"top"},
+		{"id":"e1067fe94bfa0a19","fromNode":"526a935f2bcb117c","fromSide":"right","toNode":"ee75bd60bad9e0ff","toSide":"left"},
+		{"id":"c515a909e379db5d","fromNode":"ee75bd60bad9e0ff","fromSide":"bottom","toNode":"72692c885fe15222","toSide":"top"},
+		{"id":"83c2b676f3f062b5","fromNode":"34f2045e379a044e","fromSide":"right","toNode":"0b35c2295192b319","toSide":"left"},
+		{"id":"489f348aad667042","fromNode":"ee75bd60bad9e0ff","fromSide":"right","toNode":"731e922975f7c267","toSide":"left"},
+		{"id":"83f72fd06af8536d","fromNode":"376c952cdee41d0d","fromSide":"bottom","toNode":"d1a4408a89ef0faa","toSide":"top"},
+		{"id":"76973d62cf75ec62","fromNode":"731e922975f7c267","fromSide":"bottom","toNode":"aa2de28c2d21e8a4","toSide":"top"},
+		{"id":"6cf2430d5277305c","fromNode":"aa2de28c2d21e8a4","fromSide":"bottom","toNode":"98bfaded609541ca","toSide":"top"},
+		{"id":"e3de7db1e90e66b9","fromNode":"731e922975f7c267","fromSide":"right","toNode":"90fb12e5578aa0f2","toSide":"left"},
+		{"id":"fb254e1ec1f91100","fromNode":"90fb12e5578aa0f2","fromSide":"bottom","toNode":"e1a5c256f7c04bdb","toSide":"top"},
+		{"id":"2e5e20c8d1a81c20","fromNode":"90fb12e5578aa0f2","fromSide":"right","toNode":"0a528a1166bed80a","toSide":"left"},
+		{"id":"b4d018b52b5d6718","fromNode":"0a528a1166bed80a","fromSide":"bottom","toNode":"e04a5e96add6e991","toSide":"top"}
+	]
+}
