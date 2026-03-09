@@ -12,11 +12,11 @@
 		{"id":"aa2de28c2d21e8a4","type":"text","text":"```\n78: You seem really cool.\n87: You do too.\n78: Wanna grab a drink after get out?\n87: 100% ;)\n```","x":1180,"y":-71,"width":250,"height":209},
 		{"id":"f7cb32262f844fa6","type":"text","text":"```\nPress LMB (Mouse 1) to shoot\n```","x":-67,"y":380,"width":250,"height":103},
 		{"id":"9ba3eaf23803d23e","type":"text","text":"```\nThe glass is broken... I'm free... but the alarm...\n```","x":-67,"y":160,"width":250,"height":200},
-		{"id":"98bfaded609541ca","x":1180,"y":230,"width":250,"height":60,"type":"text","text":"# TODO: Add more"},
+		{"id":"98bfaded609541ca","x":1180,"y":230,"width":250,"height":150,"type":"text","text":"```\n87: Wow you're amazing at fighting these guys.\n78: Thank you.\n```"},
 		{"id":"90fb12e5578aa0f2","x":1572,"y":-235,"width":250,"height":60,"type":"text","text":"# Level 4"},
-		{"id":"e1a5c256f7c04bdb","x":1572,"y":-40,"width":250,"height":60,"type":"text","text":"# TODO: Add more"},
+		{"id":"e1a5c256f7c04bdb","x":1572,"y":-40,"width":250,"height":140,"type":"text","text":"```\n87: There's too many of them!\n78: No there isn't...\n```"},
 		{"id":"0a528a1166bed80a","x":1976,"y":-235,"width":250,"height":60,"type":"text","text":"# Level 5"},
-		{"id":"e04a5e96add6e991","x":1976,"y":-40,"width":250,"height":60,"type":"text","text":"# TODO: Add more"}
+		{"id":"e04a5e96add6e991","x":1976,"y":-40,"width":250,"height":140,"type":"text","text":"```\n78: Wow looks like we made it out!\n87: Just one of us has...\n```"}
 	],
 	"edges":[
 		{"id":"296c999f58d12ca3","fromNode":"0b35c2295192b319","fromSide":"bottom","toNode":"801f9855c5182e00","toSide":"top"},
