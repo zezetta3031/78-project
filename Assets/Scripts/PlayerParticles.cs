@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerParticles : MonoBehaviour
 {
     [SerializeField] PlayerMovement MovementScript;
+    [SerializeField] PlayerAnimator AnimatorScript;
+    
     [SerializeField] ParticleSystem WalkingParticles;
     [SerializeField] ParticleSystem WallSlideParticles;
     public bool isWallSliding;
+    public bool isMoving;
     void Start()
     {
         
@@ -17,22 +20,33 @@ public class PlayerParticles : MonoBehaviour
 
     void Update()
     {
-        isWallSliding = MovementScript.isWallSliding;
-
         PlayParticles();
+        isWallSliding = MovementScript.isWallSliding;
+        isMoving = AnimatorScript.isMoving;
+
+        
 
     }
 
     public void PlayParticles()
     {
-        if (isWallSliding && !WallSlideParticles.isPlaying)
+        if(isMoving && MovementScript.isGrounded && !WalkingParticles.isPlaying)
+        {
+            WalkingParticles.Play();
+        }
+        else if (WalkingParticles.isPlaying && (!MovementScript.isGrounded || !isMoving))
+        {
+            WalkingParticles.Stop();
+        }
+
+        if(isWallSliding && !WallSlideParticles.isPlaying)
         {
             WallSlideParticles.Play();
-            Debug.Log(WallSlideParticles.isPlaying);
         }
-        else
+        else if(!isWallSliding && WallSlideParticles.isPlaying)
         {
             WallSlideParticles.Stop();
         }
+
     }
 }

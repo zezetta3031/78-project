@@ -12,6 +12,11 @@ public class DialogueInteraction : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other) // When the player enters a dialogue trigger
     {
+
+        if(!other.CompareTag("Dialogue Trigger"))
+        {
+            return;
+        }
         if (!other.CompareTag("Dialogue Trigger") && dialogueScript.typing)
             return;
         

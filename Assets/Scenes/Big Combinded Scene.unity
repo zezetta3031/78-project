@@ -3161,9 +3161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5518ff7aed0be4b89893018c74e27ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 0}
+  dialogueBox: {fileID: 1052078091}
   dialogueSetterScript: {fileID: 0}
-  dialogueScript: {fileID: 0}
+  dialogueScript: {fileID: 1052078093}
 --- !u!61 &465797480
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3171,7 +3171,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465797473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -8699,6 +8699,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2087530304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &679416195
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2046937611659101710, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_Name
+      value: Dialogue Box UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483158731638955197, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 465797473}
+    - target: {fileID: 4483158731638955197, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: movementScript
+      value: 
+      objectReference: {fileID: 465797483}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 44.731182
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -324.2724
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287902949912572375, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7391ff42270444486bb4082293e439fb, type: 3}
 --- !u!1 &699273193
 GameObject:
   m_ObjectHideFlags: 0
@@ -8768,6 +8833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 699273195}
   MovementScript: {fileID: 465797483}
+  isMoving: 0
 --- !u!212 &699273197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21229,6 +21295,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1052078091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3126732282651029251, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+  m_PrefabInstance: {fileID: 679416195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1052078093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4483158731638955197, guid: 7391ff42270444486bb4082293e439fb, type: 3}
+  m_PrefabInstance: {fileID: 679416195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052078091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770be3282440e4a649feea19dbef9596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1140848109
 GameObject:
   m_ObjectHideFlags: 0
@@ -22554,8 +22636,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementScript: {fileID: 465797483}
+  AnimatorScript: {fileID: 699273196}
   WalkingParticles: {fileID: 1724902191}
   WallSlideParticles: {fileID: 588190463}
+  isWallSliding: 0
+  isMoving: 0
 --- !u!1 &1724902188
 GameObject:
   m_ObjectHideFlags: 0
@@ -22746,7 +22831,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.83
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -23618,20 +23703,20 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0.42682838
-          inSlope: 0
-          outSlope: 0
+          inSlope: -0.20662476
+          outSlope: -0.20662476
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.059016384
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -5.98499
-          outSlope: -5.98499
+          inSlope: -2.4796689
+          outSlope: -2.4796689
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.059090912
+          inWeight: 0.049180448
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -23938,7 +24023,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 0.44705883}
         key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -27610,3 +27695,4 @@ SceneRoots:
   - {fileID: 298898555}
   - {fileID: 1366313203}
   - {fileID: 1537607829}
+  - {fileID: 679416195}

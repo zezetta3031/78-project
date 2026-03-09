@@ -6,7 +6,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     public Animator animator;
     public PlayerMovement MovementScript;
-    private bool isMoving;
+    public bool isMoving;
     void Start()
     {
         MovementScript = GetComponentInParent<PlayerMovement>();
