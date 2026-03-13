@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     //Movement variables
     public float HorizontalVelocity { get; private set; }
     public bool isFacingRight{ get; private set; }
-    public bool shouldChangeDir;
+    public bool shouldChangeDir {get; private set;}
 
     //Collision check variables
     private RaycastHit2D groundHit;
@@ -34,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     //jump variables
     public float VerticalVelocity { get; private set; }
-    public bool isJumping { get; private set; }
+    public bool isJumping;
     public bool isFastFalling { get; private set; } //is true when the player releases jump before they reach the apex of their jump
-    public bool isFalling { get; private set; }
+    public bool isFalling;
     private float fastFallTime; //time it takes the player to go from moving upwards to moving downwards
     private float fastFallReleaseSpeed; //vertical velocity of the player when entering fast fall
     public int numOfJumpsUsed;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isPastApexThreshold;
 
     //jump buffer variables
-    private float jumpBufferTimer;
+    public float jumpBufferTimer;
     private bool jumpReleasedDuringBuffer;
 
     //coyote time variables
@@ -110,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
         {
             shouldChangeDir = true;
         }
-        CountTimers();
         JumpChecks();
+        CountTimers();
         LandCheck();
 
         WallSlideCheck();
@@ -292,6 +292,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             jumpBufferTimer = MoveStats.JumpBufferTime; // player can only jump when jump buffer is >0
+            Debug.Log("Should go through?: " + (jumpBufferTimer > 0f && (isJumping || isWallSliding || isWallSlideFalling || isAirDashing || isDashFastFalling || isFalling) && !isTouchingWall && (isFalling || isJumping) && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed));
             jumpReleasedDuringBuffer = false;
         }
         //when we release jump
@@ -320,6 +321,7 @@ public class PlayerMovement : MonoBehaviour
         //initiate jump with jump buffering and coyote time
         if (jumpBufferTimer > 0f && !isFalling && (isGrounded || coyoteTimer > 0f)) //checks if the player is able to jump
         {
+            
             InitiateJump(1);
             if (jumpReleasedDuringBuffer)
             {
@@ -327,9 +329,15 @@ public class PlayerMovement : MonoBehaviour
                 fastFallReleaseSpeed = VerticalVelocity;
             }
         }
+        //air jump after coyote time
+        else if (jumpBufferTimer > 0f && !isWallSlideFalling && isFalling && numOfJumpsUsed == 0 && coyoteTimer <=0 )
+        { 
+            InitiateJump(2);
+            isFastFalling = false;
+        }
         // double jump
 
-        else if (jumpBufferTimer > 0f && (isJumping || isWallSliding || isWallSlideFalling || isAirDashing || isDashFastFalling) && !isTouchingWall && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
+        else if (jumpBufferTimer > 0f && (isJumping || isWallSliding || isWallSlideFalling || isAirDashing || isDashFastFalling || isFalling) && !isTouchingWall && (isFalling || isJumping) && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
         {
             isFastFalling = false;
             isFalling = false;
@@ -341,12 +349,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //air jump after coyote time
-        else if (jumpBufferTimer > 0f && !isWallSlideFalling && isFalling && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed - 1)
-        { 
-            InitiateJump(2);
-            isFastFalling = false;
-        }
+        
 
        
     }
