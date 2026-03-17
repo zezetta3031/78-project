@@ -33,7 +33,7 @@ MonoBehaviour:
   TimeTillJumpApex: 0.4
   GravityOnReleaseMultipler: 1
   MaxFallSpeed: 25
-  NumberOfJumpsAllowed: 2
+  NumberOfJumpsAllowed: 3
   ResetJumpOnWallSlide: 1
   TimeForUpwardsCancel: 0.027
   ApexThreshold: 0.67
