@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lines:
-  - This is test Dialogue box 1
+  - You can use AD to move around and space to Jump
   freezePlayer: 0
 --- !u!1 &4433487019927768297
 GameObject:
