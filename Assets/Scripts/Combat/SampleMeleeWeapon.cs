@@ -6,7 +6,6 @@ using UnityEngine;
 public class SampleMeleeWeapon : MonoBehaviour
 {
     public float swipeDuration = 0.2f;    // How long the swipe lasts
-    public float hitboxHeight = 0.0005f;
     public float meleeCooldown = 0.1f;    // Delay before you can swing again
     public float meleeRange = 2f;
     public CapsuleCollider2D col;

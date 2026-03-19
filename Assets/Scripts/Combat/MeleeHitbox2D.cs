@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeHitbox2D : MonoBehaviour
@@ -38,7 +39,7 @@ public class MeleeHitbox2D : MonoBehaviour
         if (other.CompareTag("Dialogue Trigger") || other.gameObject.name.Contains("Bullet"))
             return;
         EnemyScript enemy = other.GetComponent<EnemyScript>();
-        if (enemy != null)
+        if (!enemy.IsUnityNull())
         {
             enemy.Inflict(0.25); // Apply damage
             Debug.Log("Detected enemy");

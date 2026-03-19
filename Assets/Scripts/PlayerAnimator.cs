@@ -20,7 +20,7 @@ public class PlayerAnimator : MonoBehaviour
 
     }
     
-       public void AnimationUpdate(Animator animator){
+   public void AnimationUpdate(Animator animator){
         animator.SetFloat("AnimVelocityX", MovementScript.HorizontalVelocity);
         animator.SetBool("AnimIsFalling", MovementScript.isFalling);
         animator.SetBool("AnimIsGrounded", MovementScript.isGrounded);
@@ -45,5 +45,5 @@ public class PlayerAnimator : MonoBehaviour
             animator.SetFloat("isFacingRight", 0);
         }
 
-    }
+   }
 }

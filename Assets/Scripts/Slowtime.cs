@@ -45,7 +45,7 @@ public class Slowtime : MonoBehaviour
         {
             Time.timeScale = 1f;
             SlowCooldown -= Time.deltaTime;
-            yield return null;
-            }
+            yield return null; 
+        }
     }
 }

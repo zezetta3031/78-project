@@ -137,15 +137,76 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3186253664876722178, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
       propertyPath: Lines.Array.data[0]
-      value: Hi
+      value: You can use AD to move around and space to Jump
       objectReference: {fileID: 0}
     - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -83.30309
+      value: -85.67
       objectReference: {fileID: 0}
     - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.385796
+      value: -6.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+--- !u!1001 &179382494
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1131243113829523673, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_Name
+      value: Dialogue test (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186253664876722178, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: Lines.Array.data[0]
+      value: Press LMB (Mouse 1) to shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.96
       objectReference: {fileID: 0}
     - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21999,6 +22060,67 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1296012575
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1131243113829523673, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_Name
+      value: Dialogue test (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186253664876722178, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: Lines.Array.data[0]
+      value: The glass is broken... I'm free... but the alarm...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -83.07748
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.385796
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575120811421381731, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f9f0bc27bad64a21b383a9f5862f900, type: 3}
 --- !u!1 &1319061824
 GameObject:
   m_ObjectHideFlags: 0
@@ -28063,3 +28185,5 @@ SceneRoots:
   - {fileID: 628651633}
   - {fileID: 999867125}
   - {fileID: 62777585}
+  - {fileID: 1296012575}
+  - {fileID: 179382494}
