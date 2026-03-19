@@ -10,17 +10,19 @@ public class SampleGunWeapon : MonoBehaviour
     public Transform firePoint; // where the projectile spawns (can be the character's position)
     private Dialogue _dialogueScript;
     private DateTime _lastShotFired = DateTime.Now;
+    [SerializeField] PlayerMovement PlayerMovementScript;
     
     // Start is called before the first frame update
     void Start()
     {
+
         firePoint = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !PlayerMovementScript.playerFreeze)
         {
             if (_lastShotFired.AddSeconds(0.25) < DateTime.Now)
             {
