@@ -3160,7 +3160,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
   projectileSpeed: 10
   firePoint: {fileID: 0}
-  PlayerMovementScript: {fileID: 465797483}
 --- !u!114 &465797483
 MonoBehaviour:
   m_ObjectHideFlags: 0
