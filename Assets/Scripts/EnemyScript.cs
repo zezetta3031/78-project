@@ -17,8 +17,8 @@ public class EnemyScript : MonoBehaviour
     public Transform firePoint;
     public EnemyType enemyType;
     public bool shouldMove;
-    private DateTime timeOfLastShot = DateTime.Now;
-    private DateTime timeOfLastBossBurst = DateTime.Now;
+    private float timeOfLastBossBurst = 0f;
+    private float timeOfLastShot = 0f;
     private int bossBurstCycleCount = 0;
     public float enemyBoundaryLeft;
     public float enemyBoundaryRight;
@@ -42,7 +42,7 @@ public class EnemyScript : MonoBehaviour
             switch (enemyType)
             {
                 case EnemyType.Standard:
-                    if (player.activeInHierarchy && timeOfLastShot.AddSeconds(0.5) < DateTime.Now)
+                    if (player.activeInHierarchy && Time.time > timeOfLastBossBurst + 0.5f)
                     {
                         Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
                         // Instantiate projectile
@@ -57,28 +57,36 @@ public class EnemyScript : MonoBehaviour
                         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
                         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
                         rb.velocity = direction * projectileSpeed;
-                        timeOfLastShot = DateTime.Now;
+                        timeOfLastShot = Time.time;
                     }
                     break;
                 case EnemyType.FirstBoss:
-                    if (player.activeInHierarchy && (timeOfLastBossBurst.AddSeconds(3.0) < DateTime.Now || (timeOfLastShot.AddSeconds(0.1) < DateTime.Now && bossBurstCycleCount <= 3)))
+                    if (!player.activeInHierarchy) return;
+
+                    // Start a new burst every 3 seconds
+                    if (Time.time > timeOfLastBossBurst + 3f)
+                    {
+                        bossBurstCycleCount = 0;
+                        timeOfLastBossBurst = Time.time;
+                    }
+
+                    // Fire shots within the burst (max 3 shots, 0.1s apart)
+                    if (bossBurstCycleCount < 3 && Time.time > timeOfLastShot + 0.1f)
                     {
                         Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
-                        // Instantiate projectile
-                
+
                         Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
                         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
 
-                        // Set projectile rotation to face the direction
+                        // Rotate projectile
                         projectile.transform.rotation = CalculateShotRotation(direction.x, direction.y);
-        
+
                         // Apply velocity
                         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
                         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
                         rb.velocity = direction * projectileSpeed;
-                        timeOfLastShot = DateTime.Now;
-                        
-                        timeOfLastBossBurst = DateTime.Now;
+
+                        timeOfLastShot = Time.time;
                         bossBurstCycleCount++;
                     }
                     
