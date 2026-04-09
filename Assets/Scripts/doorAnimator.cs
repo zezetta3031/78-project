@@ -1,43 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour
+public class doorAnimatpr : MonoBehaviour
 {
-    public GameObject teleportDestination;
-    private float xPos;
-    private float yPos;
+    public Animator animator;
     public GameObject playerObject;
     public Vector2 endPosition;
-    public bool levelChange;
-    public Animator animator;
-    public GameObject triggerField;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        xPos = teleportDestination.transform.position.x;
-        yPos = teleportDestination.transform.position.y;
-        endPosition = teleportDestination.transform.position;
-    }
-    public void Update()
-    {
-        // Debug.Log(playerObject);
+        
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag.Contains("Player")){
-            if(levelChange){    
-                StartCoroutine(startAnimation(other));
-            }
+            StartCoroutine(startAnimation(other));
         }
         
     }
-
     IEnumerator startAnimation(Collider2D other)
     {
         float animationTime = 0.75f;
@@ -46,12 +34,9 @@ public class Teleporter : MonoBehaviour
         teleportPlayer(other);
         yield return null;
     }
-
-
     public void teleportPlayer(Collider2D other)
     {
         playerObject = other.gameObject;
         playerObject.transform.position = endPosition;
     }
-
 }
