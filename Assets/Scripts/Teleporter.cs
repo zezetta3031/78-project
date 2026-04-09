@@ -34,6 +34,10 @@ public class Teleporter : MonoBehaviour
             if(levelChange){    
                 StartCoroutine(startAnimation(other));
             }
+            else
+            {
+                teleportPlayer(other);
+            }
         }
         
     }
