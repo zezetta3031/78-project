@@ -153,10 +153,7 @@ public class PlayerMovement : MonoBehaviour
         {
             VerticalVelocity = Mathf.Clamp(VerticalVelocity, -50f, 50f);
         }
-
-
-       
-
+        
         rb.velocity = new Vector2(HorizontalVelocity, VerticalVelocity);
     }
 

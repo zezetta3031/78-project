@@ -42,7 +42,7 @@ public class EnemyScript : MonoBehaviour
             switch (enemyType)
             {
                 case EnemyType.Standard:
-                    if (player.activeInHierarchy && Time.time > timeOfLastBossBurst + 0.5f)
+                    if (player.activeInHierarchy && Time.time > timeOfLastShot + 0.5f)
                     {
                         Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
                         // Instantiate projectile

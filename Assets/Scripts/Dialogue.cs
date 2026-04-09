@@ -65,7 +65,7 @@ public class Dialogue : MonoBehaviour
     IEnumerator TypeLine() // Goes through each letter in the current line and displays it
     {
         typing = true;
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in lines[index])
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textspeed);
