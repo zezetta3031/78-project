@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
@@ -122,6 +123,32 @@ public class EnemyScript : MonoBehaviour
                         timeOfLastShot = Time.time;
                     }
                     break;
+                case EnemyType.DoubleBurst:
+                    if (!player.activeInHierarchy) return;
+
+                    if (Time.time > timeOfLastBossBurst + 2f)
+                    {
+                        bossBurstCycleCount = 0;
+                        timeOfLastBossBurst = Time.time;
+                    }
+
+                    if (bossBurstCycleCount < 2 && Time.time > timeOfLastShot + 0.15f)
+                    {
+                        Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
+
+                        Vector3 spawnPos = firePoint.position + (Vector3)direction + new Vector3(0f, 0.75f, 0f);
+                        GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+                        projectile.transform.rotation = CalculateShotRotation(direction.x, direction.y);
+
+                        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+                        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                        rb.velocity = direction * projectileSpeed;
+
+                        timeOfLastShot = Time.time;
+                        bossBurstCycleCount++;
+                    }
+                    break;
                 default:
                     Debug.Log("Unknown enemy type encountered. Why are you breaking stuff?");
                     break;
@@ -177,6 +204,7 @@ public class EnemyScript : MonoBehaviour
     {
         Standard,
         Shotgun,
+        DoubleBurst,
         FirstBoss
     }
 
