@@ -93,6 +93,35 @@ public class EnemyScript : MonoBehaviour
                     if (bossBurstCycleCount == 3)
                         bossBurstCycleCount = 0;
                     break;
+                case EnemyType.Shotgun:
+                    if (player.activeInHierarchy && Time.time > timeOfLastShot + 1.2f)
+                    {
+                        Vector2 baseDirection = CalculateShotDirection(player.transform.position, transform.position);
+                        float baseAngle = Mathf.Atan2(baseDirection.y, baseDirection.x) * Mathf.Rad2Deg;
+
+                        int pelletCount = 5;
+                        float spreadAngle = 30f; // total spread in degrees
+
+                        for (int i = 0; i < pelletCount; i++)
+                        {
+                            float t = (float)i / (pelletCount - 1);
+                            float angle = baseAngle + Mathf.Lerp(-spreadAngle / 2f, spreadAngle / 2f, t);
+                            float rad = angle * Mathf.Deg2Rad;
+                            Vector2 pelletDirection = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+
+                            Vector3 spawnPos = firePoint.position + (Vector3)pelletDirection + new Vector3(0f, 0.75f, 0f);
+                            GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+                            projectile.transform.rotation = CalculateShotRotation(pelletDirection.x, pelletDirection.y);
+
+                            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+                            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                            rb.velocity = pelletDirection * projectileSpeed;
+                        }
+
+                        timeOfLastShot = Time.time;
+                    }
+                    break;
                 default:
                     Debug.Log("Unknown enemy type encountered. Why are you breaking stuff?");
                     break;
@@ -147,6 +176,7 @@ public class EnemyScript : MonoBehaviour
     public enum EnemyType
     {
         Standard,
+        Shotgun,
         FirstBoss
     }
 
