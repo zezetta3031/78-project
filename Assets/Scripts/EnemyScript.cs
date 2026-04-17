@@ -101,6 +101,14 @@ public class EnemyScript : MonoBehaviour
         
         if (health <= 0)
         {
+            if (enemyType == EnemyType.FirstBoss)
+            {
+                HealthScript hs = GetComponent<HealthScript>();
+                if (hs != null)
+                {
+                    hs.health = 3;
+                }
+            }
             Destroy(enemy);
         }
 
