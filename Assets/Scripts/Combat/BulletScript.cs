@@ -13,6 +13,11 @@ public class BulletScript : MonoBehaviour
             if (enemy != null)
             {
                 enemy.Inflict(0.25); // Apply damage
+                HealthScript health = other.GetComponent<HealthScript>();
+                if (health != null)
+                {
+                    health.EnemyKilled();
+                }
             }
             else
             {

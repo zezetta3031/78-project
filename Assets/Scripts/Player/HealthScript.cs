@@ -13,6 +13,8 @@ public class HealthScript : MonoBehaviour
     public GameObject thirdHeart;
     public Sprite emptyHeart;
 
+    private int enemiesKilledStreak = 0;
+
     public void Damage()
     {
         _health -= 1;
@@ -30,18 +32,37 @@ public class HealthScript : MonoBehaviour
         }
     }
 
+    public void Recharge()
+    {
+        _health += 1;
+        if (_health == 2)
+        {
+            thirdHeart.GetComponent<Image>().sprite = emptyHeart;
+        } else if (_health == 1)
+        {
+            secondHeart.GetComponent<Image>().sprite = emptyHeart;
+        }
+    }
+
+    public void Update()
+    {
+        if (enemiesKilledStreak == 10)
+        {
+            enemiesKilledStreak = 0;
+            Recharge();
+        }
+    }
+
+    public void EnemyKilled()
+    {
+        enemiesKilledStreak++;
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Health Powerup"))
         {
-            _health += 1;
-            if (_health == 2)
-            {
-                thirdHeart.GetComponent<Image>().sprite = emptyHeart;
-            } else if (_health == 1)
-            {
-                secondHeart.GetComponent<Image>().sprite = emptyHeart;
-            }
+            Recharge();
         }
     }
 }
