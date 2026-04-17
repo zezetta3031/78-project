@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using UnityEngine;
 
 namespace Combat
@@ -35,7 +36,7 @@ namespace Combat
         private void Split()
         {
             _hasSplit = true;
-
+            CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.15f, 0.05f));
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             float baseAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
             float speed = rb.velocity.magnitude;
