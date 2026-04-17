@@ -29,4 +29,19 @@ public class HealthScript : MonoBehaviour
             Destroy(player);
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Health Powerup"))
+        {
+            _health += 1;
+            if (_health == 2)
+            {
+                thirdHeart.GetComponent<Image>().sprite = emptyHeart;
+            } else if (_health == 1)
+            {
+                secondHeart.GetComponent<Image>().sprite = emptyHeart;
+            }
+        }
+    }
 }
