@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
     private new Renderer renderer;
     private GameObject player;
     public GameObject projectilePrefab;
+    public GameObject shotgunProjectilePrefab;
     public float projectileSpeed = 2f;
     public Transform firePoint;
     public EnemyType enemyType;
@@ -111,7 +112,7 @@ public class EnemyScript : MonoBehaviour
                             Vector2 pelletDirection = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
 
                             Vector3 spawnPos = firePoint.position + (Vector3)pelletDirection + new Vector3(0f, 0.75f, 0f);
-                            GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+                            GameObject projectile = Instantiate(shotgunProjectilePrefab, spawnPos, Quaternion.identity);
 
                             projectile.transform.rotation = CalculateShotRotation(pelletDirection.x, pelletDirection.y);
 
@@ -147,6 +148,25 @@ public class EnemyScript : MonoBehaviour
 
                         timeOfLastShot = Time.time;
                         bossBurstCycleCount++;
+                    }
+                    break;
+                case EnemyType.Kaboom:
+                    if (player.activeInHierarchy && Time.time > timeOfLastShot + 5f)
+                    {
+                        Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
+                        // Instantiate projectile
+                
+                        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
+                        GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+                        // Set projectile rotation to face the direction
+                        projectile.transform.rotation = CalculateShotRotation(direction.x, direction.y);
+        
+                        // Apply velocity
+                        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+                        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                        rb.velocity = direction * projectileSpeed;
+                        timeOfLastShot = Time.time;
                     }
                     break;
                 default:
@@ -205,7 +225,8 @@ public class EnemyScript : MonoBehaviour
         Standard,
         Shotgun,
         DoubleBurst,
-        FirstBoss
+        FirstBoss,
+        Kaboom,
     }
 
     public static Quaternion CalculateShotRotation(float x, float y)

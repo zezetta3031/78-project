@@ -6,6 +6,7 @@ using UnityEngine;
 public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
+    public GameObject shotgunProjectilePrefab;
     public float projectileSpeed = 2f;
     public Transform firePoint;
 
@@ -49,17 +50,30 @@ public class SampleGunWeapon : MonoBehaviour
             // Reset ramp when mouse is released
             _mouseHoldDuration = 0f;
         }
+
+        if (Input.GetMouseButton(2))
+        {
+            Shoot(true);
+        }
     }
 
-    void Shoot()
+    void Shoot(Boolean shotgun = false)
     {
         Vector3 mouseWorldPos = Camera.main!.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
 
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
         Vector3 spawnPos = firePoint.position + (Vector3)direction;
+        GameObject projectile;
 
-        GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+        if (shotgun)
+        {
+            projectile = Instantiate(shotgunProjectilePrefab, spawnPos, Quaternion.identity);
+        }
+        else
+        {
+            projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+        }
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
