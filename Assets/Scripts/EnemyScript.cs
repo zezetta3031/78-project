@@ -34,7 +34,7 @@ public class EnemyScript : MonoBehaviour
     private void Start()
     {
         renderer = GetComponent<Renderer>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("PLAYER");
     }
 
     void Update()
@@ -234,6 +234,8 @@ public class EnemyScript : MonoBehaviour
 
     public static Vector2 CalculateShotDirection(Vector3 playerTransform, Vector3 enemyTransform)
     {
-        return (playerTransform - enemyTransform).normalized;
+        Vector3 target = (playerTransform - enemyTransform).normalized;
+        target.y += -.1f;
+        return target;
     }
 }
