@@ -154,7 +154,6 @@ public class EnemyScript : MonoBehaviour
                     if (player.activeInHierarchy && Time.time > timeOfLastShot + 5f)
                     {
                         Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
-                        // Instantiate projectile
                 
                         Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
                         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);

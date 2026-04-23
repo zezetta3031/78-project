@@ -3322,7 +3322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
-  shotgunProjectilePrefab: {fileID: 0}
+  shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 10
   firePoint: {fileID: 0}
   PlayerMovementScript: {fileID: 465797483}
@@ -3370,8 +3370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  player: {fileID: 465797473}
-  firstHeart: {fileID: 1226589183}
   secondHeart: {fileID: 704798385}
   thirdHeart: {fileID: 2117591523}
   emptyHeart: {fileID: -825626600, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
