@@ -1,15 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
     public int health = 3;
     private int _lastFrameHeath = 3;
-    public GameObject player;
-    public GameObject firstHeart;
     public GameObject secondHeart;
     public GameObject thirdHeart;
     public Sprite emptyHeart;
@@ -30,7 +26,7 @@ public class HealthScript : MonoBehaviour
         else if (health == 0)
         {
             Debug.Log("Player is dead");
-            Destroy(player);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
