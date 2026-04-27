@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 public class Teleporter : MonoBehaviour
 {
     public GameObject teleportDestination;
-    private float xPos;
-    private float yPos;
     public GameObject playerObject;
     public Vector2 endPosition;
     public bool levelChange;
@@ -21,8 +19,6 @@ public class Teleporter : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        xPos = teleportDestination.transform.position.x;
-        yPos = teleportDestination.transform.position.y;
         endPosition = teleportDestination.transform.position;
     }
     public void Update()
