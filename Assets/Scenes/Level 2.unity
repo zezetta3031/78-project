@@ -345,8 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  secondHeart: {fileID: 0}
-  thirdHeart: {fileID: 0}
+  secondHeart: {fileID: 1089167266}
+  thirdHeart: {fileID: 1976082988}
   emptyHeart: {fileID: -825626600, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
   fullHeart: {fileID: -1028126785, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
 --- !u!114 &84150494
