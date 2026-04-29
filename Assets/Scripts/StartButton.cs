@@ -5,6 +5,6 @@ public class StartButton : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Big Combinded Scene");
+        SceneManager.LoadScene("Level 1");
     }
 }
