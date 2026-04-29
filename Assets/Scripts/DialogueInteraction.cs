@@ -17,6 +17,10 @@ public class DialogueInteraction : MonoBehaviour
         {
             return;
         }
+
+        if (other.gameObject.Equals(dialogueBox))
+            return;
+        
         if (!other.CompareTag("Dialogue Trigger") && dialogueScript.typing)
             return;
         
