@@ -15,10 +15,11 @@ public class Firstbossmovement : MonoBehaviour
     private float currentSpeed; //SE
     private float maxSpeed = 10; //SE
     private float distanceToDestination; //total distance to cover
-    private int maxTravellDistance = 30; //SE
+    private int maxTravelDistance = 30; //SE
     private float distanceTravelled; //SE 
     private float distanceToNext; //Distance to next waypoint on the track
-    private float acceleration = 10; 
+    private Vector2 lastPosition;
+    private float acceleration = 2; 
     [SerializeField] GameObject nextWaypoint; //nearest waypoint in direction
     [SerializeField] GameObject[] waypoints;
     private Rigidbody2D rb;
@@ -28,40 +29,60 @@ public class Firstbossmovement : MonoBehaviour
 
     void Awake()
     {
-        GenerateDestination();
+        
         rb = GetComponent<Rigidbody2D>();
         nextWaypoint = waypoints[UnityEngine.Random.Range(0,waypoints.Length)];
+        GenerateDestination();
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(direction);
-        Debug.Log(Array.IndexOf(waypoints,nextWaypoint));
         MoveToDestination();
         UpdateValues();
     }
 
     public void GenerateDestination()
     {
+        lastPosition = rb.transform.position;
         direction = directionsArr[UnityEngine.Random.Range(0,directionsArr.Length)];
-        distanceToDestination = UnityEngine.Random.Range(0,30) * direction;
+        distanceToDestination = UnityEngine.Random.Range(15,300);
     }   
 
     private void MoveToDestination()
     {  
-        destination = (nextWaypoint.transform.position - transform.position).normalized;
-        Vector2 targetVelocity = destination * maxSpeed;
-        rb.velocity = Vector2.Lerp(rb.velocity, targetVelocity, acceleration * Time.deltaTime);
-        if(distanceToNext < 0.01)
-        {
-            rb.velocity = new Vector2(0,0);
-            int currentIndex = Array.IndexOf(waypoints, nextWaypoint);
-            nextWaypoint = waypoints[ currentIndex + ( 1 *direction)];
-
+        if(distanceTravelled < distanceToDestination){
+            destination = (nextWaypoint.transform.position - transform.position).normalized;
+            Vector2 targetVelocity = destination * maxSpeed;
+            rb.velocity = Vector2.Lerp(rb.velocity, targetVelocity, acceleration * Time.deltaTime);
+            distanceTravelled += Vector2.Distance(rb.transform.position, lastPosition);
+            lastPosition = rb.transform.position;
+            if(distanceToNext < 0.01)
+            {
+                ChangeDirection(nextWaypoint.transform);
+                int currentIndex = Array.IndexOf(waypoints, nextWaypoint);
+                Debug.Log("Index: "+ currentIndex);
+                Debug.Log("Direction: " + direction);
+                Debug.Log("Distance Travelled: " + distanceTravelled);
+                if(currentIndex  + 1 * direction < 0)
+                {
+                    currentIndex = 3;
+                    nextWaypoint = waypoints[currentIndex];
+                }
+                else if( currentIndex + 1 * direction > 3)
+                {
+                    Debug.Log("test");
+                    currentIndex = 0;
+                    nextWaypoint = waypoints[currentIndex];
+                }
+                else{
+                nextWaypoint = waypoints[ currentIndex + ( 1 * direction)];
+                }
+            }
         }
-
-
+        else {rb.velocity =  new Vector2(0,0);}
     }
 
     private void UpdateValues()
@@ -69,9 +90,9 @@ public class Firstbossmovement : MonoBehaviour
         distanceToNext = Vector2.Distance(transform.position, nextWaypoint.transform.position);
     }
 
-    // private IEnumerator MoveToPoint(Vector2 position, Vector2 destination, float speed)
-    //  {
+    private void ChangeDirection(Transform waypoint)
+    {
+            rb.velocity = waypoint.forward * rb.velocity.magnitude;
         
-        
-    //  }
+    }
 }
