@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    public GameObject player;
+    private HealthScript _healthScript;
+
+    public void Awake()
+    {
+        player = GameObject.Find("PLAYER");
+        _healthScript = player.GetComponent<HealthScript>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Dialogue Trigger") || other.gameObject.name.Contains("Bullet") || other.CompareTag("Enemy Boundary"))
@@ -13,11 +22,7 @@ public class BulletScript : MonoBehaviour
             if (enemy != null)
             {
                 enemy.Inflict(0.25); // Apply damage
-                HealthScript health = other.GetComponent<HealthScript>();
-                if (health != null)
-                {
-                    health.EnemyKilled();
-                }
+                _healthScript.EnemyKilled();
             }
             else
             {
@@ -27,13 +32,8 @@ public class BulletScript : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            HealthScript health = other.GetComponent<HealthScript>();
-            if (health != null)
-            {
-                health.Damage();
-            }
+            _healthScript.Damage();
         }
-        
         
         Destroy(gameObject);
     }

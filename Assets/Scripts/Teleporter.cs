@@ -4,22 +4,21 @@ using System.Linq;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Teleporter : MonoBehaviour
 {
     public GameObject teleportDestination;
-    private float xPos;
-    private float yPos;
     public GameObject playerObject;
     public Vector2 endPosition;
     public bool levelChange;
     public Animator animator;
     public GameObject triggerField;
+    public string nextLevelName;
+    
     // Start is called before the first frame update
     void Awake()
     {
-        xPos = teleportDestination.transform.position.x;
-        yPos = teleportDestination.transform.position.y;
         endPosition = teleportDestination.transform.position;
     }
     public void Update()
@@ -29,14 +28,15 @@ public class Teleporter : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log(other.gameObject.tag);
-        if(other.gameObject.tag.Contains("Player")){
+        Debug.Log(other.gameObject.tag);
+        if(other.gameObject.CompareTag("Player")){
             if(levelChange){    
-                StartCoroutine(startAnimation(other));
+                // StartCoroutine(startAnimation(other));
+                SceneManager.LoadScene(nextLevelName);
             }
             else
             {
-                teleportPlayer(other);
+                teleportPlayer(playerObject);
             }
         }
         
@@ -47,15 +47,14 @@ public class Teleporter : MonoBehaviour
         float animationTime = 0.75f;
         animator.SetTrigger("levelChange");
         yield return new WaitForSeconds(animationTime);
-        teleportPlayer(other);
+        teleportPlayer(playerObject);
         yield return null;
     }
 
 
-    public void teleportPlayer(Collider2D other)
+    public void teleportPlayer(GameObject player)
     {
-        playerObject = other.gameObject;
-        playerObject.transform.position = endPosition;
+        player.transform.position = endPosition;
     }
 
 }

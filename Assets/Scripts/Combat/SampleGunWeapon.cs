@@ -14,6 +14,7 @@ public class SampleGunWeapon : MonoBehaviour
 
     private float _lastShotTime = 0f;
     private float _mouseHoldDuration = 0f;
+    private float _shotgunMouseHoldDuration = 0f;
 
     // Fire rate settings
     private const float BASE_FIRE_INTERVAL = 0.5f;   // seconds between shots at the start
@@ -51,9 +52,14 @@ public class SampleGunWeapon : MonoBehaviour
             _mouseHoldDuration = 0f;
         }
 
-        if (Input.GetMouseButton(2))
+        if (Input.GetMouseButton(2) && _shotgunMouseHoldDuration == 0f)
         {
             Shoot(true);
+            _shotgunMouseHoldDuration = Time.time + _shotgunMouseHoldDuration;
+        }
+        else if (!Input.GetMouseButton(2))
+        {
+            _shotgunMouseHoldDuration = 0f;
         }
     }
 
