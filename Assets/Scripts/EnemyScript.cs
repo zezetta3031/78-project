@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -25,7 +26,8 @@ public class EnemyScript : MonoBehaviour
     private int bossBurstCycleCount = 0;
     public float enemyBoundaryLeft;
     public float enemyBoundaryRight;
-    private bool _isWalkingLeft = true; 
+    private bool _isWalkingLeft = true;
+    private bool _isBossActive = false;
 
     public void Inflict(double dmg)
     {
@@ -36,6 +38,8 @@ public class EnemyScript : MonoBehaviour
     {
         renderer = GetComponent<Renderer>();
         player = GameObject.Find("PLAYER");
+        if (enemyType == EnemyType.FirstBoss)
+            StartCoroutine(StartBoss());
     }
 
     void Update()
@@ -64,7 +68,7 @@ public class EnemyScript : MonoBehaviour
                     }
                     break;
                 case EnemyType.FirstBoss:
-                    if (player.activeInHierarchy && Time.time > timeOfLastShot + 1.2f)
+                    if (player.activeInHierarchy && Time.time > timeOfLastShot + 1.2f && _isBossActive) 
                     {
                         Vector2 baseDirection = CalculateShotDirection(player.transform.position, transform.position);
                         float baseAngle = Mathf.Atan2(baseDirection.y, baseDirection.x) * Mathf.Rad2Deg;
@@ -223,6 +227,13 @@ public class EnemyScript : MonoBehaviour
         DoubleBurst,
         FirstBoss,
         Kaboom,
+    }
+
+    private IEnumerator StartBoss()
+    {
+        yield return new WaitForSeconds(2.5f);
+        
+        _isBossActive = true;
     }
 
     public static Quaternion CalculateShotRotation(float x, float y)

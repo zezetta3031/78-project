@@ -33,6 +33,7 @@ public class BulletScript : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player hit bullet");
             _healthScript.Damage();
         }
         

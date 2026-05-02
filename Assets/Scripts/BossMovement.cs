@@ -53,39 +53,33 @@ public class Firstbossmovement : MonoBehaviour
 
     private void MoveToDestination()
     {  
-        if(distanceTravelled < distanceToDestination){
-            destination = (nextWaypoint.transform.position - transform.position).normalized;
-            Vector2 targetVelocity = destination * maxSpeed;
-            rb.velocity = Vector2.Lerp(rb.velocity, targetVelocity, acceleration * Time.deltaTime);
-            distanceTravelled += Vector2.Distance(rb.transform.position, lastPosition);
-            lastPosition = rb.transform.position;
-            if(distanceToNext < 0.01)
-            {
-                ChangeDirection(nextWaypoint.transform);
-                int currentIndex = Array.IndexOf(waypoints, nextWaypoint);
-                Debug.Log("Index: "+ currentIndex);
-                Debug.Log("Direction: " + direction);
-                Debug.Log("Distance Travelled: " + distanceTravelled);
-                if(currentIndex  + 1 * direction < 0)
-                {
-                    currentIndex = 3;
-                    nextWaypoint = waypoints[currentIndex];
-                }
-                else if(currentIndex + 1 * direction > 3)
-                {
-                    Debug.Log("test");
-                    currentIndex = 0;
-                    nextWaypoint = waypoints[currentIndex];
-                }
-                else 
-                {
-                    nextWaypoint = waypoints[ currentIndex + ( 1 * direction)];
-                }
-            }
-        }
-        else
+        destination = (nextWaypoint.transform.position - transform.position).normalized;
+        Vector2 targetVelocity = destination * maxSpeed;
+        rb.velocity = Vector2.Lerp(rb.velocity, targetVelocity, acceleration * Time.deltaTime);
+        distanceTravelled += Vector2.Distance(rb.transform.position, lastPosition);
+        lastPosition = rb.transform.position;
+        if(distanceToNext < 0.01)
         {
-            rb.velocity =  new Vector2(0, 0);
+            ChangeDirection(nextWaypoint.transform);
+            int currentIndex = Array.IndexOf(waypoints, nextWaypoint);
+            Debug.Log("Index: "+ currentIndex);
+            Debug.Log("Direction: " + direction);
+            Debug.Log("Distance Travelled: " + distanceTravelled);
+            if(currentIndex  + 1 * direction < 0)
+            {
+                currentIndex = 3;
+                nextWaypoint = waypoints[currentIndex];
+            }
+            else if(currentIndex + 1 * direction > 3)
+            {
+                Debug.Log("test");
+                currentIndex = 0;
+                nextWaypoint = waypoints[currentIndex];
+            }
+            else 
+            {
+                nextWaypoint = waypoints[ currentIndex + ( 1 * direction)];
+            }
         }
     }
 
