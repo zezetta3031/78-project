@@ -3,6 +3,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public GameObject player;
+    public bool bossBullet = false;
     private HealthScript _healthScript;
 
     public void Awake()
@@ -15,7 +16,7 @@ public class BulletScript : MonoBehaviour
     {
         if (other.CompareTag("Dialogue Trigger") || other.gameObject.name.Contains("Bullet") || other.CompareTag("Enemy Boundary"))
             return;
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && !bossBullet)
         {
             // Try to get the EnemyScript component on the object
             EnemyScript enemy = other.GetComponent<EnemyScript>();

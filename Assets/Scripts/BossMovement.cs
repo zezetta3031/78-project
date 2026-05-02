@@ -71,18 +71,22 @@ public class Firstbossmovement : MonoBehaviour
                     currentIndex = 3;
                     nextWaypoint = waypoints[currentIndex];
                 }
-                else if( currentIndex + 1 * direction > 3)
+                else if(currentIndex + 1 * direction > 3)
                 {
                     Debug.Log("test");
                     currentIndex = 0;
                     nextWaypoint = waypoints[currentIndex];
                 }
-                else{
-                nextWaypoint = waypoints[ currentIndex + ( 1 * direction)];
+                else 
+                {
+                    nextWaypoint = waypoints[ currentIndex + ( 1 * direction)];
                 }
             }
         }
-        else {rb.velocity =  new Vector2(0,0);}
+        else
+        {
+            rb.velocity =  new Vector2(0, 0);
+        }
     }
 
     private void UpdateValues()
@@ -92,7 +96,6 @@ public class Firstbossmovement : MonoBehaviour
 
     private void ChangeDirection(Transform waypoint)
     {
-            rb.velocity = waypoint.forward * rb.velocity.magnitude;
-        
+        rb.velocity = waypoint.forward * rb.velocity.magnitude;
     }
 }

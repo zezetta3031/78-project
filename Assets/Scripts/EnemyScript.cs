@@ -2,6 +2,7 @@ using System;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
@@ -63,37 +64,33 @@ public class EnemyScript : MonoBehaviour
                     }
                     break;
                 case EnemyType.FirstBoss:
-                    if (!player.activeInHierarchy) return;
-
-                    // Start a new burst every 3 seconds
-                    if (Time.time > timeOfLastBossBurst + 3f)
+                    if (player.activeInHierarchy && Time.time > timeOfLastShot + 1.2f)
                     {
-                        bossBurstCycleCount = 0;
-                        timeOfLastBossBurst = Time.time;
-                    }
+                        Vector2 baseDirection = CalculateShotDirection(player.transform.position, transform.position);
+                        float baseAngle = Mathf.Atan2(baseDirection.y, baseDirection.x) * Mathf.Rad2Deg;
 
-                    // Fire shots within the burst (max 3 shots, 0.1s apart)
-                    if (bossBurstCycleCount < 3 && Time.time > timeOfLastShot + 0.1f)
-                    {
-                        Vector2 direction = CalculateShotDirection(player.transform.position, transform.position);
+                        int pelletCount = 5;
+                        float spreadAngle = 30f; // total spread in degrees
 
-                        Vector3 spawnPos = firePoint.position + (Vector3)(direction) + new Vector3(0f, 0.75f, 0f);
-                        GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+                        for (int i = 0; i < pelletCount; i++)
+                        {
+                            float t = (float)i / (pelletCount - 1);
+                            float angle = baseAngle + Mathf.Lerp(-spreadAngle / 2f, spreadAngle / 2f, t);
+                            float rad = angle * Mathf.Deg2Rad;
+                            Vector2 pelletDirection = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
 
-                        // Rotate projectile
-                        projectile.transform.rotation = CalculateShotRotation(direction.x, direction.y);
+                            Vector3 spawnPos = firePoint.position + (Vector3)pelletDirection + new Vector3(0f, 0.75f, 0f);
+                            GameObject projectile = Instantiate(shotgunProjectilePrefab, spawnPos, Quaternion.identity);
 
-                        // Apply velocity
-                        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-                        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-                        rb.velocity = direction * projectileSpeed;
+                            projectile.transform.rotation = CalculateShotRotation(pelletDirection.x, pelletDirection.y);
+
+                            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+                            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                            rb.velocity = pelletDirection * projectileSpeed;
+                        }
 
                         timeOfLastShot = Time.time;
-                        bossBurstCycleCount++;
                     }
-                    
-                    if (bossBurstCycleCount == 3)
-                        bossBurstCycleCount = 0;
                     break;
                 case EnemyType.Shotgun:
                     if (player.activeInHierarchy && Time.time > timeOfLastShot + 1.2f)
@@ -183,6 +180,8 @@ public class EnemyScript : MonoBehaviour
                 {
                     hs.health = 3;
                 }
+
+                SceneManager.LoadScene("Main Menu");
             }
             Destroy(enemy);
         }

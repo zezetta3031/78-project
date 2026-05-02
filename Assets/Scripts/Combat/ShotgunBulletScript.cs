@@ -36,7 +36,7 @@ namespace Combat
         private void Split()
         {
             _hasSplit = true;
-            CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.15f, 0.05f));
+            // CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.15f, 0.05f));
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             float baseAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
             float speed = rb.velocity.magnitude;
@@ -66,18 +66,20 @@ namespace Combat
 
             if (other.CompareTag("Enemy"))
             {
-                EnemyScript enemy = other.GetComponent<EnemyScript>();
-                if (enemy != null)
-                {
-                    enemy.Inflict(0.25);
-                    HealthScript health = other.GetComponent<HealthScript>();
-                    if (health != null)
-                        health.EnemyKilled();
-                }
-                else
-                {
-                    Debug.Log("No enemy script found on object tagged as enemy");
-                }
+                // EnemyScript enemy = other.GetComponent<EnemyScript>();
+                // if (enemy != null)
+                // {
+                //     enemy.Inflict(0.25);
+                //     HealthScript health = other.GetComponent<HealthScript>();
+                //     if (health != null)
+                //         health.EnemyKilled();
+                // }
+                // else
+                // {
+                //     Debug.Log("No enemy script found on object tagged as enemy");
+                // }
+                Destroy(gameObject);
+                return;
             }
 
             if (other.CompareTag("Player"))
