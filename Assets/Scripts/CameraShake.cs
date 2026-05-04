@@ -29,6 +29,7 @@ namespace DefaultNamespace
             }
 
             transform.localPosition = originalPos;
+            Debug.Log(originalPos);
         }
     }
 }
