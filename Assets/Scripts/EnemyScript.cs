@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Numerics;
+using DefaultNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -94,6 +95,7 @@ public class EnemyScript : MonoBehaviour
                         }
 
                         timeOfLastShot = Time.time;
+                        CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.15f, 0.05f));
                     }
                     break;
                 case EnemyType.Shotgun:
@@ -123,6 +125,8 @@ public class EnemyScript : MonoBehaviour
                         }
 
                         timeOfLastShot = Time.time;
+                        
+                        CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.15f, 0.05f));
                     }
                     break;
                 case EnemyType.DoubleBurst:
