@@ -289,7 +289,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
             jumpBufferTimer = MoveStats.JumpBufferTime; // player can only jump when jump buffer is >0
-            Debug.Log("Should go through?: " + (jumpBufferTimer > 0f && (isJumping || isWallSliding || isWallSlideFalling || isAirDashing || isDashFastFalling || isFalling) && !isTouchingWall && (isFalling || isJumping) && numOfJumpsUsed < MoveStats.NumberOfJumpsAllowed));
             jumpReleasedDuringBuffer = false;
         }
         //when we release jump
