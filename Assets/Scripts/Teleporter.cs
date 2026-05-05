@@ -28,7 +28,6 @@ public class Teleporter : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if(other.gameObject.CompareTag("Player")){
             if(levelChange){    
                 // StartCoroutine(startAnimation(other));

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Enemy Boundary
   - Hitbox
+  - Health Powerup
   layers:
   - Default
   - TransparentFX
