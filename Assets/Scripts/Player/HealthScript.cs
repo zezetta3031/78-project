@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,8 +11,17 @@ public class HealthScript : MonoBehaviour
     public GameObject thirdHeart;
     public Sprite emptyHeart;
     public Sprite fullHeart;
+    public GameObject powerupSpawner;
+    private HealthPowerupSpawner _spawnerScript;
 
     private int enemiesKilledStreak = 0;
+
+    public void Awake()
+    {
+        if (!powerupSpawner)
+            return;
+        _spawnerScript = GetComponent<HealthPowerupSpawner>();
+    }
 
     public void Damage()
     {
@@ -73,9 +83,10 @@ public class HealthScript : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Health Powerup"))
+        if (other.CompareTag("Health Powerup") && powerupSpawner)
         {
             Recharge();
+            _spawnerScript.DespawnPowerup();
         }
     }
 }
