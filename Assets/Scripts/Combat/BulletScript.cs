@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -5,6 +6,7 @@ public class BulletScript : MonoBehaviour
     public GameObject player;
     public bool bossBullet = false;
     private HealthScript _healthScript;
+    private bool _touched;
 
     public void Awake()
     {
@@ -41,6 +43,17 @@ public class BulletScript : MonoBehaviour
         }
         
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (_touched) 
+            Destroy(gameObject);
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        _touched = true;
     }
 
     private void OnBecameInvisible()
