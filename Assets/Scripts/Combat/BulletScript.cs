@@ -29,6 +29,9 @@ public class BulletScript : MonoBehaviour
             {
                 Debug.Log("No enemy script found on object tagged as enemy");
             }
+        } else if (other.CompareTag("Enemy") && bossBullet)
+        {
+            return;
         }
 
         if (other.CompareTag("Player"))
