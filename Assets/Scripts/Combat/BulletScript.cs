@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -45,19 +46,20 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (_touched) 
-            Destroy(gameObject);
-    }
-
     private void OnCollisionExit2D(Collision2D other)
     {
         _touched = true;
+        StartCoroutine(DestroyAfterSeconds(0.75f));
     }
 
     private void OnBecameInvisible()
     {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator DestroyAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }
 }
