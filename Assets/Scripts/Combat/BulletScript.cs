@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -5,6 +7,7 @@ public class BulletScript : MonoBehaviour
     public GameObject player;
     public bool bossBullet = false;
     private HealthScript _healthScript;
+    private bool _touched;
 
     public void Awake()
     {
@@ -29,6 +32,9 @@ public class BulletScript : MonoBehaviour
             {
                 Debug.Log("No enemy script found on object tagged as enemy");
             }
+        } else if (other.CompareTag("Enemy") && bossBullet)
+        {
+            return;
         }
 
         if (other.CompareTag("Player"))
@@ -40,8 +46,20 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        _touched = true;
+        StartCoroutine(DestroyAfterSeconds(0.75f));
+    }
+
     private void OnBecameInvisible()
     {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator DestroyAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }
 }
