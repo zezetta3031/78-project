@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -8,11 +10,18 @@ public class BulletScript : MonoBehaviour
     public bool bossBullet = false;
     private HealthScript _healthScript;
     private bool _touched;
-
+    Vector2 bulletDir;
+    Rigidbody2D rb;
     public void Awake()
     {
         player = GameObject.Find("PLAYER");
         _healthScript = player.GetComponent<HealthScript>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,8 +57,15 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        _touched = true;
-        StartCoroutine(DestroyAfterSeconds(0.75f));
+        if (other.gameObject.CompareTag("Player"))
+            return;
+
+        if (_touched)
+            Destroy(gameObject);
+
+        if (!other.gameObject.CompareTag("Enemy"))
+            _touched = true;
+        
     }
 
     private void OnBecameInvisible()
