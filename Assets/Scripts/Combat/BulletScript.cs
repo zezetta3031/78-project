@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -12,8 +13,10 @@ public class BulletScript : MonoBehaviour
     private bool _touched;
     Vector2 bulletDir;
     Rigidbody2D rb;
+    [SerializeField] ParticleSystem WallHitParticle;
     public void Awake()
     {
+        
         player = GameObject.Find("PLAYER");
         _healthScript = player.GetComponent<HealthScript>();
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -57,6 +60,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
+
         if (other.gameObject.CompareTag("Player"))
             return;
 

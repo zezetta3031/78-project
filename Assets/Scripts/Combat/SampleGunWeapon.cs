@@ -7,7 +7,7 @@ public class SampleGunWeapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public GameObject shotgunProjectilePrefab;
-    public float projectileSpeed = 2f;
+    public float playerProjectileSpeed = 2f;
     public Transform firePoint;
 
     [SerializeField] PlayerMovement PlayerMovementScript;
@@ -86,6 +86,6 @@ public class SampleGunWeapon : MonoBehaviour
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        rb.velocity = direction * projectileSpeed;
+        rb.velocity = direction * playerProjectileSpeed;
     }
 }
