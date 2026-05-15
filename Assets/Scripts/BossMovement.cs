@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
@@ -27,12 +28,14 @@ public class Firstbossmovement : MonoBehaviour
     [SerializeField] float rotationMod;
     [SerializeField] float rotationSpeed;
     [SerializeField] SpriteRenderer spriteRenderer;
+    private CinemachineImpulseSource impulseSource;
 
 
     private Vector2 destination;
 
     void Awake()
     {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         player = GameObject.FindGameObjectWithTag("Player");   
         rb = GetComponent<Rigidbody2D>();
         nextWaypoint = waypoints[UnityEngine.Random.Range(0,waypoints.Length)];
@@ -66,9 +69,6 @@ public class Firstbossmovement : MonoBehaviour
         {
             ChangeDirection(nextWaypoint.transform);
             int currentIndex = Array.IndexOf(waypoints, nextWaypoint);
-            Debug.Log("Index: "+ currentIndex);
-            Debug.Log("Direction: " + direction);
-            Debug.Log("Distance Travelled: " + distanceTravelled);
             if(currentIndex  + 1 * direction < 0)
             {
                 currentIndex = 3;

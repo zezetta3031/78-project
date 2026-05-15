@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+using Cinemachine;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class EnemyScript : MonoBehaviour
     public float enemyBoundaryRight;
     private bool _isWalkingLeft = true;
     private bool _isBossActive = false;
+    private CinemachineImpulseSource impulseSource;
+    private AudioSource audioSource;
+    [SerializeField] AudioClip shootSFX;
 
     public void Inflict(double dmg)
     {
@@ -37,6 +41,8 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         renderer = GetComponent<Renderer>();
         player = GameObject.Find("PLAYER");
         if (enemyType == EnemyType.FirstBoss)
@@ -74,6 +80,11 @@ public class EnemyScript : MonoBehaviour
 
                     int pelletCount = 5;
                     float spreadAngle = 30f; // total spread in degrees
+
+                    audioSource.clip = shootSFX;
+                    audioSource.Play();
+
+                    CameraShakeManager.instance.CameraShake(impulseSource, 0.2f);
 
                     for (int i = 0; i < pelletCount; i++)
                     {
