@@ -68,6 +68,7 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
 
         if (!other.gameObject.CompareTag("Enemy"))
+            Instantiate(WallHitParticle, gameObject.transform.position, gameObject.transform.rotation);
             _touched = true;
         
     }

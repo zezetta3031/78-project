@@ -23,13 +23,17 @@ public class Firstbossmovement : MonoBehaviour
     [SerializeField] GameObject nextWaypoint; //nearest waypoint in direction
     [SerializeField] GameObject[] waypoints;
     private Rigidbody2D rb;
+    public GameObject player;
+    [SerializeField] float rotationMod;
+    [SerializeField] float rotationSpeed;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
 
     private Vector2 destination;
 
     void Awake()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");   
         rb = GetComponent<Rigidbody2D>();
         nextWaypoint = waypoints[UnityEngine.Random.Range(0,waypoints.Length)];
         GenerateDestination();
@@ -85,6 +89,11 @@ public class Firstbossmovement : MonoBehaviour
 
     private void UpdateValues()
     {
+
+        Vector2 vectorTarget = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(vectorTarget.y,vectorTarget.x) * Mathf.Rad2Deg -  rotationMod;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        spriteRenderer.transform.rotation = Quaternion.Euler(new Vector3(0,0, angle));
         distanceToNext = Vector2.Distance(transform.position, nextWaypoint.transform.position);
     }
 

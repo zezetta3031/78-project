@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   bossBullet: 1
-  WallHitParticle: {fileID: 6270802172254640738, guid: 5a27c28c962ca4a2b8a41f333ad6535a, type: 3}
+  WallHitParticle: {fileID: 2546906234725555863, guid: 9da24258bd8db40a1ba0889cb4aedffd, type: 3}
 --- !u!58 &713191206832244057
 CircleCollider2D:
   m_ObjectHideFlags: 0
