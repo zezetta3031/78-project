@@ -13,7 +13,7 @@ using Cinemachine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public double health = 1.0;
+    public float health = 1.0f;
     public GameObject enemy;
     private new Renderer renderer;
     private GameObject player;
@@ -33,10 +33,11 @@ public class EnemyScript : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     private AudioSource audioSource;
     [SerializeField] AudioClip shootSFX;
+    private float _enemyArmor;
 
-    public void Inflict(double dmg)
+    public void Inflict(float dmg)
     {
-        health -= dmg;
+        health -= (dmg - _enemyArmor);
     }
 
     private void Start()
@@ -73,6 +74,7 @@ public class EnemyScript : MonoBehaviour
                 }
                 break;
             case EnemyType.FirstBoss:
+                _enemyArmor = 0.1f;
                 if (player.activeInHierarchy && Time.time > timeOfLastShot + 1.2f && _isBossActive) 
                 {
                     Vector2 baseDirection = CalculateShotDirection(player.transform.position, transform.position);

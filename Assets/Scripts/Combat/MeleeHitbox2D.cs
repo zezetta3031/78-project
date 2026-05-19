@@ -41,7 +41,7 @@ public class MeleeHitbox2D : MonoBehaviour
         EnemyScript enemy = other.GetComponent<EnemyScript>();
         if (!enemy.IsUnityNull())
         {
-            enemy.Inflict(0.25); // Apply damage
+            enemy.Inflict(0.25f); // Apply damage
             Debug.Log("Detected enemy");
         }
         else
