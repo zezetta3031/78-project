@@ -349,6 +349,7 @@ MonoBehaviour:
   thirdHeart: {fileID: 1976082988}
   emptyHeart: {fileID: -825626600, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
   fullHeart: {fileID: -1028126785, guid: 0ebdfde3f685d4c6baa6c5bcbe998bf4, type: 3}
+  powerupSpawner: {fileID: 0}
 --- !u!114 &84150494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24954,7 +24955,7 @@ MonoBehaviour:
   levelChange: 1
   animator: {fileID: 0}
   triggerField: {fileID: 0}
-  nextLevelName: FirstBoss
+  nextLevelName: Level 3
 --- !u!212 &1605565039
 SpriteRenderer:
   m_ObjectHideFlags: 0
