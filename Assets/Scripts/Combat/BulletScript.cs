@@ -37,7 +37,7 @@ public class BulletScript : MonoBehaviour
             EnemyScript enemy = other.GetComponent<EnemyScript>();
             if (enemy != null)
             {
-                enemy.Inflict(0.25); // Apply damage
+                enemy.Inflict(0.25f); // Apply damage
                 _healthScript.EnemyKilled();
             }
             else
