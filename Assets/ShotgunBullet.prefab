@@ -322,3 +322,4 @@ MonoBehaviour:
   spreadAngle: 30
   splitDistance: 4
   splitTime: 1.5
+  damageReductionFactor: 6

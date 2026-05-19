@@ -33,11 +33,11 @@ public class EnemyScript : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     private AudioSource audioSource;
     [SerializeField] AudioClip shootSFX;
-    private float _enemyArmor;
+    private float _enemyArmorPercent;
 
     public void Inflict(float dmg)
     {
-        health -= (dmg - _enemyArmor);
+        health -= (dmg * (1-_enemyArmorPercent));
     }
 
     private void Start()
@@ -74,7 +74,7 @@ public class EnemyScript : MonoBehaviour
                 }
                 break;
             case EnemyType.FirstBoss:
-                _enemyArmor = 0.1f;
+                _enemyArmorPercent = 0.3f;
                 if (player.activeInHierarchy && Time.time > timeOfLastShot + 1.2f && _isBossActive) 
                 {
                     Vector2 baseDirection = CalculateShotDirection(player.transform.position, transform.position);
