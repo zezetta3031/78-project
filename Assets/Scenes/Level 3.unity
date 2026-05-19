@@ -1726,7 +1726,7 @@ GameObject:
   - component: {fileID: 191982655}
   - component: {fileID: 191982654}
   - component: {fileID: 191982653}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (9)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1800,6 +1800,7 @@ MonoBehaviour:
   shouldMove: 1
   enemyBoundaryLeft: -81
   enemyBoundaryRight: -76
+  shootSFX: {fileID: 0}
 --- !u!95 &191982655
 Animator:
   serializedVersion: 5
@@ -2320,7 +2321,7 @@ MonoBehaviour:
   levelChange: 1
   animator: {fileID: 0}
   triggerField: {fileID: 0}
-  nextLevelName: Level 4
+  nextLevelName: FirstBoss
 --- !u!212 &294264637
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12268,7 +12269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
-  projectileSpeed: 10
+  playerProjectileSpeed: 2
   firePoint: {fileID: 0}
   PlayerMovementScript: {fileID: 308616254}
 --- !u!61 &308616257
@@ -12404,7 +12405,7 @@ GameObject:
   - component: {fileID: 314021419}
   - component: {fileID: 314021418}
   - component: {fileID: 314021417}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (10)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -12478,6 +12479,7 @@ MonoBehaviour:
   shouldMove: 1
   enemyBoundaryLeft: -81
   enemyBoundaryRight: -76
+  shootSFX: {fileID: 0}
 --- !u!95 &314021419
 Animator:
   serializedVersion: 5
@@ -13269,8 +13271,8 @@ Tilemap:
   - first: {x: -75, y: -44, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 10
-      m_TileSpriteIndex: 10
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -15566,8 +15568,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 65616d53d79c041838ff3a488d1196ae, type: 2}
   - m_RefCount: 46
     m_Data: {fileID: 11400000, guid: 938a855d673f245cdb0c829e26f1b314, type: 2}
   - m_RefCount: 3
@@ -15578,7 +15580,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: be8951df7a07144ffbe20d5904356762, type: 2}
   - m_RefCount: 58
     m_Data: {fileID: 11400000, guid: cbb4c7381ecb9408794758fd89aa372e, type: 2}
-  - m_RefCount: 142
+  - m_RefCount: 141
     m_Data: {fileID: 11400000, guid: cc1a052cbbd864286bbb1f4df58fc7f3, type: 2}
   - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: dcaf70e5d7201445386d37468170fca4, type: 2}
@@ -15591,8 +15593,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1283522986, guid: 02ae34488e77342778820a422d41bbdc, type: 3}
   - m_RefCount: 46
     m_Data: {fileID: 579522855, guid: a0c61af38f89846d38754f1e0b34300f, type: 3}
   - m_RefCount: 3
@@ -15603,7 +15605,7 @@ Tilemap:
     m_Data: {fileID: -1462893093, guid: a0c61af38f89846d38754f1e0b34300f, type: 3}
   - m_RefCount: 58
     m_Data: {fileID: 266396176, guid: a0c61af38f89846d38754f1e0b34300f, type: 3}
-  - m_RefCount: 142
+  - m_RefCount: 141
     m_Data: {fileID: 676787140, guid: a0c61af38f89846d38754f1e0b34300f, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: 447076287, guid: a0c61af38f89846d38754f1e0b34300f, type: 3}
@@ -15684,7 +15686,7 @@ GameObject:
   - component: {fileID: 492047328}
   - component: {fileID: 492047327}
   - component: {fileID: 492047326}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -15758,6 +15760,7 @@ MonoBehaviour:
   shouldMove: 0
   enemyBoundaryLeft: 0
   enemyBoundaryRight: 0
+  shootSFX: {fileID: 0}
 --- !u!95 &492047328
 Animator:
   serializedVersion: 5
@@ -15926,7 +15929,7 @@ GameObject:
   - component: {fileID: 586979049}
   - component: {fileID: 586979048}
   - component: {fileID: 586979047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (5)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -16000,6 +16003,7 @@ MonoBehaviour:
   shouldMove: 1
   enemyBoundaryLeft: -77
   enemyBoundaryRight: -72
+  shootSFX: {fileID: 0}
 --- !u!95 &586979049
 Animator:
   serializedVersion: 5
@@ -16901,7 +16905,7 @@ GameObject:
   - component: {fileID: 1254343082}
   - component: {fileID: 1254343081}
   - component: {fileID: 1254343080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (8)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -16975,6 +16979,7 @@ MonoBehaviour:
   shouldMove: 1
   enemyBoundaryLeft: -81
   enemyBoundaryRight: -76
+  shootSFX: {fileID: 0}
 --- !u!95 &1254343082
 Animator:
   serializedVersion: 5
@@ -17076,7 +17081,7 @@ GameObject:
   - component: {fileID: 1269577893}
   - component: {fileID: 1269577892}
   - component: {fileID: 1269577891}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -17150,6 +17155,7 @@ MonoBehaviour:
   shouldMove: 1
   enemyBoundaryLeft: -81
   enemyBoundaryRight: -76
+  shootSFX: {fileID: 0}
 --- !u!95 &1269577893
 Animator:
   serializedVersion: 5
@@ -22165,7 +22171,7 @@ GameObject:
   - component: {fileID: 1386881659}
   - component: {fileID: 1386881658}
   - component: {fileID: 1386881657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -22239,6 +22245,7 @@ MonoBehaviour:
   shouldMove: 0
   enemyBoundaryLeft: 0
   enemyBoundaryRight: 0
+  shootSFX: {fileID: 0}
 --- !u!95 &1386881659
 Animator:
   serializedVersion: 5
@@ -22417,7 +22424,7 @@ GameObject:
   - component: {fileID: 1451223311}
   - component: {fileID: 1451223310}
   - component: {fileID: 1451223309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (4)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -22491,6 +22498,7 @@ MonoBehaviour:
   shouldMove: 0
   enemyBoundaryLeft: 0
   enemyBoundaryRight: 0
+  shootSFX: {fileID: 0}
 --- !u!95 &1451223311
 Animator:
   serializedVersion: 5
@@ -22765,7 +22773,7 @@ GameObject:
   - component: {fileID: 1536223817}
   - component: {fileID: 1536223816}
   - component: {fileID: 1536223815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (6)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -22839,6 +22847,7 @@ MonoBehaviour:
   shouldMove: 1
   enemyBoundaryLeft: -81
   enemyBoundaryRight: -76
+  shootSFX: {fileID: 0}
 --- !u!95 &1536223817
 Animator:
   serializedVersion: 5
@@ -28169,7 +28178,7 @@ GameObject:
   - component: {fileID: 1966617634}
   - component: {fileID: 1966617633}
   - component: {fileID: 1966617632}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (7)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -28243,6 +28252,7 @@ MonoBehaviour:
   shouldMove: 1
   enemyBoundaryLeft: -81
   enemyBoundaryRight: -76
+  shootSFX: {fileID: 0}
 --- !u!95 &1966617634
 Animator:
   serializedVersion: 5
