@@ -1,11 +1,6 @@
-using System;
 using System.Collections;
-using System.Numerics;
-using DefaultNamespace;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -106,7 +101,6 @@ public class EnemyScript : MonoBehaviour
                     }
 
                     timeOfLastShot = Time.time;
-                    CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.15f, 0.05f));
                 }
                 break;
             case EnemyType.Shotgun:
