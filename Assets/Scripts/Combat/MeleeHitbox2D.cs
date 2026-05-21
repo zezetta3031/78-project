@@ -19,29 +19,28 @@ public class MeleeHitbox2D : MonoBehaviour
 
         Gizmos.color = Color.red;
 
-        // Convert collider center to world space
         Vector2 worldCenter = (Vector2)transform.position +
                               (Vector2)(transform.rotation * col.offset);
 
-        // Convert collider size to world space
         Vector2 worldSize = Vector2.Scale(col.size, transform.lossyScale);
 
         Gizmos.DrawWireCube(worldCenter, worldSize);
     }
-    
-    public void SetDirection(float direction, float playerYPos)
+
+    public void SetDirection(float direction)
     {
-        col.offset = new Vector2(Mathf.Abs(col.offset.x) * direction, playerYPos);
+        col.offset = new Vector2(Mathf.Abs(col.offset.x) * direction, 0f);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Dialogue Trigger") || other.gameObject.name.Contains("Bullet"))
             return;
+
         EnemyScript enemy = other.GetComponent<EnemyScript>();
         if (!enemy.IsUnityNull())
         {
-            enemy.Inflict(0.25f); // Apply damage
+            enemy.Inflict(0.25f);
             Debug.Log("Detected enemy");
         }
         else
