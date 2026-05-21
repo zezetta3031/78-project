@@ -9,12 +9,13 @@ namespace Combat
         public GameObject bulletPrefab;     
         public int pelletCount = 5;
         public float spreadAngle = 30f;
-        public float splitDistance = 4f;    // splits after travelling this far
+        public float splitDistance = 5f;    // splits after travelling this far
         public float splitTime = 1.5f;      // or after this many seconds, whichever comes first
 
         private Vector3 _spawnPosition;
         private float _spawnTime;
         private bool _hasSplit;
+        public float damageReductionFactor;
 
         private void Start()
         {
@@ -51,9 +52,13 @@ namespace Combat
                 GameObject pellet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 pellet.transform.rotation = Quaternion.Euler(0, 0, angle);
 
+                BulletScript pelletScript = pellet.GetComponent<BulletScript>();
+                pelletScript.damage = pelletScript.damage/damageReductionFactor;
+
                 Rigidbody2D pelletRb = pellet.GetComponent<Rigidbody2D>();
                 pelletRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
                 pelletRb.velocity = pelletDirection * speed;
+                
             }
 
             Destroy(gameObject);

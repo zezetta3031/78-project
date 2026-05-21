@@ -14,6 +14,7 @@ public class BulletScript : MonoBehaviour
     Vector2 bulletDir;
     Rigidbody2D rb;
     [SerializeField] ParticleSystem WallHitParticle;
+    public float damage = 0.25f;
     public void Awake()
     {
         
@@ -37,7 +38,7 @@ public class BulletScript : MonoBehaviour
             EnemyScript enemy = other.GetComponent<EnemyScript>();
             if (enemy != null)
             {
-                enemy.Inflict(0.25); // Apply damage
+                enemy.Inflict(damage); // Apply damage
                 _healthScript.EnemyKilled();
             }
             else
