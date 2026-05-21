@@ -4,11 +4,12 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.Callbacks;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BulletScript : MonoBehaviour
 {
     public GameObject player;
-    public bool bossBullet = false;
+    [FormerlySerializedAs("bossBullet")] public bool enemyBullet = false;
     private HealthScript _healthScript;
     private bool _touched;
     Vector2 bulletDir;
@@ -32,7 +33,7 @@ public class BulletScript : MonoBehaviour
     {
         if (other.CompareTag("Dialogue Trigger") || other.gameObject.name.Contains("Bullet") || other.CompareTag("Enemy Boundary"))
             return;
-        if (other.CompareTag("Enemy") && !bossBullet)
+        if (other.CompareTag("Enemy") && !enemyBullet)
         {
             // Try to get the EnemyScript component on the object
             EnemyScript enemy = other.GetComponent<EnemyScript>();
@@ -45,12 +46,9 @@ public class BulletScript : MonoBehaviour
             {
                 Debug.Log("No enemy script found on object tagged as enemy");
             }
-        } else if (other.CompareTag("Enemy") && bossBullet)
-        {
-            return;
         }
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && enemyBullet)
         {
             Debug.Log("Player hit bullet");
             _healthScript.Damage();
