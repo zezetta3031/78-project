@@ -129,8 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  bossBullet: 1
+  enemyBullet: 1
   WallHitParticle: {fileID: 2546906234725555863, guid: 9da24258bd8db40a1ba0889cb4aedffd, type: 3}
+  damage: 0.25
 --- !u!58 &713191206832244057
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
