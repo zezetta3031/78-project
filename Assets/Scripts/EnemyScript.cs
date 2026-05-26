@@ -193,7 +193,7 @@ public class EnemyScript : MonoBehaviour
                     hs.health = 3;
                 }
 
-                SceneManager.LoadScene("Level 3");
+                SceneManager.LoadScene("Level 4");
             }
             Destroy(enemy);
         }
