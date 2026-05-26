@@ -9397,10 +9397,10 @@ MonoBehaviour:
   teleportDestination: {fileID: 1707345427}
   playerObject: {fileID: 1088705082}
   endPosition: {x: 0, y: 0}
-  levelChange: 0
+  levelChange: 1
   animator: {fileID: 0}
   triggerField: {fileID: 0}
-  nextLevelName: 
+  nextLevelName: Main Menu
 --- !u!212 &1250243578
 SpriteRenderer:
   m_ObjectHideFlags: 0
