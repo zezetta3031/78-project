@@ -210,6 +210,8 @@ GameObject:
   - component: {fileID: 117385974}
   - component: {fileID: 117385973}
   - component: {fileID: 117385972}
+  - component: {fileID: 117385976}
+  - component: {fileID: 117385975}
   m_Layer: 3
   m_Name: Props
   m_TagString: Untagged
@@ -1661,6 +1663,76 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &117385975
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117385970}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 117385970}
+--- !u!50 &117385976
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117385970}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &129549110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 191982652}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 191982657}
@@ -2401,6 +2473,8 @@ GameObject:
   - component: {fileID: 303488845}
   - component: {fileID: 303488844}
   - component: {fileID: 303488843}
+  - component: {fileID: 303488847}
+  - component: {fileID: 303488846}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -12068,6 +12142,76 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &303488846
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303488841}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 303488841}
+--- !u!50 &303488847
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303488841}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &308616251
 GameObject:
   m_ObjectHideFlags: 0
@@ -12471,7 +12615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 314021416}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 314021421}
@@ -15752,7 +15896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 492047325}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 492047330}
@@ -15995,7 +16139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 586979046}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 586979051}
@@ -16971,7 +17115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 1254343079}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 1254343084}
@@ -17147,7 +17291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 1269577890}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 1269577895}
@@ -22237,7 +22381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 1386881656}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 1386881661}
@@ -22490,7 +22634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 1451223308}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 1451223313}
@@ -22839,7 +22983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 1536223814}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 1536223819}
@@ -28244,7 +28388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   enemy: {fileID: 1966617631}
-  projectilePrefab: {fileID: 1211969114806435215, guid: 1a341dfd37b6a4aed914555b14d9fbfe, type: 3}
+  projectilePrefab: {fileID: 1211969114806435215, guid: f74b0aadc7b9641a98c3c7be5e2adb8f, type: 3}
   shotgunProjectilePrefab: {fileID: 1211969114806435215, guid: 09f17c6f45ffe432f8911bc446f3468b, type: 3}
   projectileSpeed: 2
   firePoint: {fileID: 1966617636}
